@@ -1,0 +1,207 @@
+extends ./layouts/layout
+
+block content 
+    div
+        .first-eye
+            .p-absolute(style='width: 100%; background-color: #00000024')
+        
+            //- Header
+            .p-absolute.container-w.z-index-h.l-header
+                .l-logo
+                    a.navbar-brand(href='#')
+                        img#logo(src='/img/LKLlogo.png')
+                .header-btn
+                    .d-flex.header-btn-nor
+                        div
+                            a.nav-link(style='color: white', href='#')
+                                b Giới thiệu
+                        div
+                            a.nav-link.blackText(href='infoTeacher.html')
+                                b Giảng viên
+                        div
+                            a.nav-link.blackText(href='infoCourse.html')
+                                b Khóa học
+                    div
+                        a(href='./signup.html')
+                            button.btn(style='color: #d66324;border-color: #d66324;border-width: 3px;margin: 0 10px 0 10px', type='button') Ghi danh
+                    
+                    div
+                        // Login
+                        a(href='./login.html')
+                            button.btn(style='\
+                                background-color: #d66324;\
+                                color: white;\
+                                border-color: #d66324;\
+                                border-width: 3px;\
+                                margin: 0 10px 0 10px;\
+                                ', type='submit') Đăng nhập
+            
+            .container-w.centroid
+                .flex-h
+                    div
+                        br
+
+                    // Get Advices
+                    .getAdvices(style='border-radius: 10px')
+                        form(action='', onsubmit='return CheckInput()', method='POST')
+                            .form-group
+                                input#phone.form-control(type='text', onclick='ClearErrorMess()', placeholder='Số điện thoại', name='phone')
+                            .form-group
+                                input#name.form-control(type='text', onclick='ClearErrorMess()', placeholder='Tên', name='name')
+                            select#literacy.form-control
+                                option(disabled='', selected='', value='') Trình độ học vấn
+                                option(value='Primary') Tiểu học
+                                option(value='Secondary') Trung học cơ sở
+                                option(value='High') Trung học phổ thông
+                                option(value='College') Cao đẳng
+                                option(value='University') Đại học
+                                option(value='Other') Khác
+                            p#ErrorMess
+                            button.btn.btn-success.colorSeeDetail.width100Percent.centroid(type='submit') Nhận tư vấn
+        // Alert
+        // Message Success
+        #signinMessage
+        // Message Fail
+        //
+            <div
+            onclick="closeMessage()"
+            id="messageFromSignup"
+            class="alert alert-danger"
+            style="
+            width: 600px;
+            text-align: center;
+            margin: auto;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            display: none;
+            "
+            >
+            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span
+            >Đăng ký thất bại. Hệ thống đang quá tải vui lòng quay lại sau</span
+            >
+            </div>
+            
+        // Detail
+        .detail.centroid
+            .container-w.centroid
+                .l-intro
+                    .card
+                        p
+                        h4 KKL Edu
+                        span.card-text.fontSize24 Là một trung tâm giáo dục chuyên nghiệp sáng tạo. Được thành lập bởi các chuyên viên và giảng viên hàng đầu của cả nước...
+                        p
+                        a.btn.btn-success.colorSeeDetail.centroid(href='') Xem chi ti&#x1EBF;t
+                    .video.centroid
+                        iframe(src='https://www.youtube.com/embed/1cu-tv2rJ-U')
+    
+        // Benefit
+        .container
+            p.spaceRow
+            .row
+                .col-lg-6.col-md-6.col-sm-6.col-xs-4.col-12
+                    img.BenifitPicture(src='/img/benifit1.png')
+                .col-lg-6.col-md-6.col-sm-6.col-xs-4.col-12.infoBenifit
+                    h4 Tiện lợi, nhanh chóng, hiệu quả
+                    span.card-text.fontSize20 Dễ dàng tra cứu thông tin khóa học, giảng viên, sơ đồ đào tạo. Các thắc mắc của học viên được phản hồi nhanh chóng bởi các chuyên gia.
+            p.spaceRow
+            .row
+                .col-lg-6.col-md-6.col-sm-6.col-xs-4.col-12.infoBenifit
+                    h4 Môi trường thân thiện
+                    span.card-text.fontSize20 Trung tâm cam kết cung cấp đầy đủ các nhu cầu thiết yếu của học viên, tạo cho học viên những điều kiện thuận lợi nhất để học tập.
+                .col-lg-6.col-md-6.col-sm-6.col-xs-4.col-12
+                    img.BenifitPicture(src='/img/benifit2.png')
+            p.spaceRow
+            .row
+                .col-lg-6.col-md-6.col-sm-6.col-xs-4.col-12
+                    img.BenifitPicture(src='/img/benifit3.png')
+                .col-lg-6.col-md-6.col-sm-6.col-xs-4.col-12.infoBenifit
+                    h4 Học không giới hạn
+                    span.card-text.fontSize20 Không giới hạn độ tuổi, không giới hạn trình độ, không giới hạn cấp bậc xã hội.
+            p.spaceRow
+
+        // Statistics
+        .statisticTab(style='height: 100%')
+            .container
+                .row
+                    // Box1
+                    .col-lg-4.col-md-4.col-sm-4.col-xs-12.col-12
+                        .card.WidthHeight9070Percent(style='margin-top: 50px')
+                            .card-body
+                                p.staticsInfo 5-7
+                                p.fontSize35 Dạy theo từng nhóm nhỏ
+                    // Box2
+                    .col-lg-4.col-md-4.col-sm-4.col-xs-12.col-12
+                        .card.WidthHeight9070Percent(style='margin-top: 50px')
+                            .card-body
+                                p.staticsInfo ∞
+                                p.fontSize35 Phát triển vượt trội
+                    // Box3
+                    .col-lg-4.col-md-4.col-sm-4.col-xs-12.col-12
+                        .card.WidthHeight9070Percent(style='margin-top: 50px')
+                            .card-body
+                                p.staticsInfo 70%
+                                p.fontSize35 Tập trung thực hành
+        
+        // Customer Comments
+        .container
+            p.commentHeader Nhận xét
+            .row
+                .col-lg-2.col-md-3.col-11
+                    img.customerAvatar(src='/img/ava1.png')
+                .col-lg-10.col-md-9.col-11.infoCustomerComment
+                    h4 Nguyễn Ngọc Thảo, mẹ của Minh Đức, 11 tuổi
+                    span.card-text.fontSize20 Hồi học ở các trung tâm khác, con tôi chẳng chịu học hành gì cả. Nhưng kể từ khi tôi cho nó đăng ký học ở đây, mọi chuyện thay đổi rõ rệt. Không chỉ biết cách sử dụng máy tính hiệu quả, thằng bé còn nhiệt tình dạy cho mọi người trong gia đình sử dụng nữa.
+            p.spaceRow
+            .row
+                .col-lg-2.col-md-3.col-11
+                    img.customerAvatar(src='/img/ava2.png')
+                .col-lg-10.col-md-9.col-11.infoCustomerComment
+                    h4 Hoàng Anh, 20 tuổi
+                    span.card-text.fontSize20 Học ở trung tâm rất vui, em gặp được rất nhiều bạn mới. Mọi người cùng trao đổi làm cho buổi học vô cùng sôi động.
+            p.spaceRow
+            .row
+                .col-lg-2.col-md-3.col-11
+                    img.customerAvatar(src='/img/ava3.png')
+                .col-lg-10.col-md-9.col-11.infoCustomerComment
+                    h4 Công Đăng, 30 tuổi
+                    span.card-text.fontSize20 Cứ nghĩ ở cái tuổi này thì mình sẽ không phải học cái gì nữa, cũng không có nơi nào dạy người lớn tuổi. Nhưng thật may mắn, kiến thức ở trung tâm rất phù hợp với tôi, tôi có thể dễ dàng hiểu được nội dung mà giảng viên truyền tải. Gia đình tôi ủng hộ.
+            
+            // More Comments
+            .row
+                .col-lg-2.col-md-3.col-11
+                .col-lg-10.col-md-9.col-11.infoCustomerComment
+                    a.commentMore(href='#') Thêm đánh giá...
+                p.spaceRow
+        
+        // Footer
+        #footer.centroid
+            .container-w
+                .row
+                    // Map Picture
+                    img.flex.map(src='/img/map.png', width='400', heigh='400')
+                    
+                    // Info Footer
+                    .infoFooter
+                        h Nhóm phát triển phần mềm KKL Edu
+                        br
+                        h 19 Nguyễn Hữu Thọ, Tân Phong, Q7, TPHCM
+                        br
+                        h Hotline: (+84) 0987654321
+                        br
+                        h Email: lklsupport@gmail.com
+                        br
+                        h Copyright © 2020 by KKL Edu
+                        br
+
+                        // Some Other Media
+                        img.twitterLogo(src='/img/twitterLogo.png', width='100')
+                        img(src='/img/facebookLogo.png', width='60')
+                        img(src='/img/instagramLogo.png', width='55')
+                
+                // Product Footer
+                .productFooter
+                    p
+                        img(src='https://kichi.ggg.com.vn/wp-content/uploads/2018/10/bct.png')
+                    p Producted by KKl Software Team.
