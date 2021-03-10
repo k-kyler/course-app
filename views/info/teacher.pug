@@ -1,0 +1,142 @@
+extends ../layouts/layout
+
+block content 
+    .first-eye(style="height: 50vh;")
+            .p-absolute(style='width: 100%; background-color: #00000024')
+        
+            //- Header
+            .p-absolute.container-w.z-index-h.l-header
+                .l-logo
+                    a.navbar-brand(href='#')
+                        img#logo(src='/img/LKLlogo.png')
+                .header-btn
+                    .d-flex.header-btn-nor
+                        div
+                            a.nav-link.blackText(href='/')
+                                b Giới thiệu
+                        div
+                            a.nav-link.blackText(style='color: white', href='/info/teacher')
+                                b Giảng viên
+                        div
+                            a.nav-link.blackText(href='/info/course')
+                                b Khóa học
+                    div
+                        a(href='/auth/register')
+                            button.btn(class="btn-outline-primary", type='button') Ghi danh
+                    
+                    div
+                        // Login
+                        a(href='/auth/login')
+                            button.btn(class="btn-danger mx-3", type='button') Đăng nhập
+            
+            div(class="container centroid")
+                div(class="width100Percent")
+                    div(class="colorSeeDetail width100Percent centroid banner") Danh sách các Giảng viên
+
+    div(class="container centroid")
+        //- Show Teacher List
+        div(class="container")
+            div(class="row")
+                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/ava1.png")
+                        div(class="user-info")
+                            p(class="title") Thái Trà My
+                            span(class="position") Phó Giáo Sư - Tiến Sĩ
+                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/ava3.png")
+                        div(class="user-info")
+                            p(class="title") Phạm Văn Huy
+                            span(class="position") Tiến Sĩ
+                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/ava3.png")
+                        div(class="user-info")
+                            p(class="title") Đặng Minh Thắng
+                            span(class="position") Tiến Sĩ
+                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/ava3.png")
+                        div(class="user-info")
+                            p(class="title") Lê Văn Vang
+                            span(class="position") Thạc Sĩ - NCS
+                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/ava3.png")
+                        div(class="user-info")
+                            p(class="title") Mai Văn Mạnh
+                            span(class="position") Thạc Sĩ
+                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/ava2.png")
+                        div(class="user-info")
+                            p(class="title") Võ Hoàng Anh
+                            span(class="position") Thạc Sĩ - NCS
+                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/ava2.png")
+                        div(class="user-info")
+                            p(class="title") Hồ Thị Linh
+                            span(class="position") Thạc Sĩ
+                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/ava3.png")
+                        div(class="user-info")
+                            p(class="title") Bùi Xuân Thắng
+                            span(class="position") Thạc Sĩ
+                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/ava3.png")
+                        div(class="user-info")
+                            p(class="title") Vũ Đình Hồng
+                            span(class="position") Thạc Sĩ - NCS
+                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/ava3.png")
+                        div(class="user-info")
+                            p(class="title") Trần Trung Tín
+                            span(class="position") Thạc Sĩ - NCS
+                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/ava3.png")
+                        div(class="user-info")
+                            p(class="title") Bùi Danh Hường
+                            span(class="position") Thạc Sĩ
+                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/ava3.png")
+                        div(class="user-info")
+                            p(class="title") Trần Lương Quốc Đại
+                            span(class="position") Thạc Sĩ
+
+    // Footer
+    #footer.centroid
+        .container-w
+            .row
+                // Map Picture
+                img.flex.map(src='/img/map.png', width='400', heigh='400')
+                
+                // Info Footer
+                .infoFooter
+                    h Nhóm phát triển phần mềm KKL Edu
+                    br
+                    h 19 Nguyễn Hữu Thọ, Tân Phong, Q7, TPHCM
+                    br
+                    h Hotline: (+84) 0987654321
+                    br
+                    h Email: lklsupport@gmail.com
+                    br
+                    h Copyright © 2020 by KKL Edu
+                    br
+
+                    // Some Other Media
+                    img.twitterLogo(src='/img/twitterLogo.png', width='100')
+                    img(src='/img/facebookLogo.png', width='60')
+                    img(src='/img/instagramLogo.png', width='55')
+            
+            // Product Footer
+            .productFooter
+                p
+                    img(src='https://kichi.ggg.com.vn/wp-content/uploads/2018/10/bct.png')
+                p Producted by KKl Software Team.

@@ -18,6 +18,7 @@ const session = require("express-session");
 
 // Require routes
 const authRoute = require("./routes/auth.route");
+const infoRoute = require("./routes/info.route");
 
 // Require custom middlewares
 const authMiddleware = require("./middlewares/auth.middleware");
@@ -61,6 +62,7 @@ app.get("/logout", (req, res) => {
 
 // Use routes
 app.use("/auth", isAuthMiddleware.preventWhenLogged, authRoute);
+app.use("/info", infoRoute);
 
 // Server listen
 app.listen(port, () => {

@@ -1,0 +1,204 @@
+extends ../layouts/layout
+
+block content 
+    .first-eye(style="height: 50vh;")
+            .p-absolute(style='width: 100%; background-color: #00000024')
+        
+            //- Header
+            .p-absolute.container-w.z-index-h.l-header
+                .l-logo
+                    a.navbar-brand(href='#')
+                        img#logo(src='/img/LKLlogo.png')
+                .header-btn
+                    .d-flex.header-btn-nor
+                        div
+                            a.nav-link.blackText(href='/')
+                                b Giới thiệu
+                        div
+                            a.nav-link.blackText(href='/info/teacher')
+                                b Giảng viên
+                        div
+                            a.nav-link.blackText(style='color: white', href='/info/course')
+                                b Khóa học
+                    div
+                        a(href='/auth/register')
+                            button.btn(class="btn-outline-primary", type='button') Ghi danh
+                    
+                    div
+                        // Login
+                        a(href='/auth/login')
+                            button.btn(class="btn-danger mx-3", type='button') Đăng nhập
+            
+            div(class="container centroid")
+                div(class="width100Percent")
+                    div(class="colorSeeDetail width100Percent centroid banner") Danh sách các Khóa học
+
+    div(class="container centroid")
+        //- Show Teacher List
+        div(class="container")
+            div(class="row")
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj3.jpg")
+                        div(class="user-info")
+                            p(class="title") Công nghệ phần mềm
+                            span(class="position") Giảng viên: Đặng Minh Thắng
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj2.jpg")
+                        div(class="user-info")
+                            p(class="title") Cấu trúc dữ liệu và giải thuật
+                            span(class="position") Giảng viên: Trần Lương Quốc Đại
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj1.png")
+                        div(class="user-info")
+                            p(class="title") Lập trình Game
+                            span(class="position") Giảng viên: Vũ Đình Hồng
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj4.png")
+                        div(class="user-info")
+                            p(class="title") Lập trình Web và ứng dụng
+                            span(class="position") Giảng viên: Mai Văn Mạnh
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj5.jpg")
+                        div(class="user-info")
+                            p(class="title") Lập trình Web nâng cao
+                            span(class="position") Giảng viên: Thái Trà My
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj6.png")
+                        div(class="user-info")
+                            p(class="title") Lập trình OOP
+                            span(class="position") Giảng viên: Trần Trung Tín
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj7.png")
+                        div(class="user-info")
+                            p(class="title") Hệ cơ sở dữ liệu
+                            span(class="position") Giảng viên: Lê Văn Vang
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj8.jpg")
+                        div(class="user-info")
+                            p(class="title") Hệ thống hoạch định doanh nghiệp
+                            span(class="position") Giảng viên: Hồ Thị Linh
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj9.png")
+                        div(class="user-info")
+                            p(class="title") Nhập môn Hệ thống phân tán
+                            span(class="position") Giảng viên: Phạm Văn Huy
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj10.jpg")
+                        div(class="user-info")
+                            p(class="title") Nhập môn Trí tuệ nhân tạo
+                            span(class="position") Giảng viên: Võ Hoàng Anh
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj11.jpg")
+                        div(class="user-info")
+                            p(class="title") Phân tích thiết kế yêu cầu
+                            span(class="position") Giảng viên: Đặng Minh Thắng
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj14.jpg")
+                        div(class="user-info")
+                            p(class="title") Phát triển PM trên nền tảng tiến hóa
+                            span(class="position") Giảng viên: Phạm Văn Huy
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj0.jpg")
+                        div(class="user-info")
+                            p(class="title") Thiết kế UX/UI
+                            span(class="position") Giảng viên: Mai Văn Mạnh
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj12.jpg")
+                        div(class="user-info")
+                            p(class="title") Thương mại điện tử
+                            span(class="position") Giảng viên: Đặng Minh Thắng
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+                div(class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12")
+                    div(class="user")
+                        img(src="/img/subj13.jpg")
+                        div(class="user-info")
+                            p(class="title") Toán tổ hợp đồ thị và ứng dụng
+                            span(class="position") Giảng viên: Bùi Danh Hường
+                            p
+                            span(class="position")
+                                a(href="#" class="btn btn-info") Đăng ký ngay
+
+    // Footer
+    #footer.centroid
+        .container-w
+            .row
+                // Map Picture
+                img.flex.map(src='/img/map.png', width='400', heigh='400')
+                
+                // Info Footer
+                .infoFooter
+                    h Nhóm phát triển phần mềm KKL Edu
+                    br
+                    h 19 Nguyễn Hữu Thọ, Tân Phong, Q7, TPHCM
+                    br
+                    h Hotline: (+84) 0987654321
+                    br
+                    h Email: lklsupport@gmail.com
+                    br
+                    h Copyright © 2020 by KKL Edu
+                    br
+
+                    // Some Other Media
+                    img.twitterLogo(src='/img/twitterLogo.png', width='100')
+                    img(src='/img/facebookLogo.png', width='60')
+                    img(src='/img/instagramLogo.png', width='55')
+            
+            // Product Footer
+            .productFooter
+                p
+                    img(src='https://kichi.ggg.com.vn/wp-content/uploads/2018/10/bct.png')
+                p Producted by KKl Software Team.
