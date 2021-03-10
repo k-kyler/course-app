@@ -22,19 +22,13 @@ block content
                             a.nav-link.blackText(href='infoCourse.html')
                                 b Khóa học
                     div
-                        a(href='./signup.html')
-                            button.btn(style='color: #d66324;border-color: #d66324;border-width: 3px;margin: 0 10px 0 10px', type='button') Ghi danh
+                        a(href='/auth/register')
+                            button.btn(class="btn-outline-primary", type='button') Ghi danh
                     
                     div
                         // Login
-                        a(href='./login.html')
-                            button.btn(style='\
-                                background-color: #d66324;\
-                                color: white;\
-                                border-color: #d66324;\
-                                border-width: 3px;\
-                                margin: 0 10px 0 10px;\
-                                ', type='submit') Đăng nhập
+                        a(href='/auth/login')
+                            button.btn(class="btn-danger mx-3", type='button') Đăng nhập
             
             .container-w.centroid
                 .flex-h

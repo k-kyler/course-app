@@ -17,11 +17,11 @@ const flash = require("express-flash");
 const session = require("express-session");
 
 // Require routes
-// const authRoute = require("./routes/auth.route");
+const authRoute = require("./routes/auth.route");
 
 // Require custom middlewares
-// const authMiddleware = require("./middlewares/auth.middleware");
-// const isAuthMiddleware = require("./middlewares/isAuth.middleware");
+const authMiddleware = require("./middlewares/auth.middleware");
+const isAuthMiddleware = require("./middlewares/isAuth.middleware");
 
 // App setup
 const app = express();
@@ -43,15 +43,13 @@ mongoose.connect(process.env.MONGO_URL, {
 
 // Default app endpoint
 app.get("/", (req, res) => {
-    // if (req.signedCookies.userName) {
-    //     res.render("index", {
-    //         userName: req.signedCookies.userName,
-    //     });
-    // } else {
-    //     res.render("index");
-    // }
-
-    res.render("index");
+    if (req.signedCookies.userName) {
+        res.render("index", {
+            userName: req.signedCookies.userName,
+        });
+    } else {
+        res.render("index");
+    }
 });
 
 // User log out endpoint
@@ -62,7 +60,7 @@ app.get("/logout", (req, res) => {
 });
 
 // Use routes
-// app.use("/login", isAuthMiddleware.preventWhenLogged, authRoute);
+app.use("/auth", isAuthMiddleware.preventWhenLogged, authRoute);
 
 // Server listen
 app.listen(port, () => {

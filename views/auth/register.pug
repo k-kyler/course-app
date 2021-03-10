@@ -1,0 +1,120 @@
+extends ../layouts/layout
+
+block content
+    //- loading
+    #loading.loading
+        .loading-overlay
+        .spinner
+
+    //- Header
+    nav.navbar.navbar-expand-md.bg-white.navbar-white
+        a(href='/')
+            img#logo(src='/img/LKLlogo.png')
+    br
+    br
+    br
+    br
+
+    //- Signup Form
+    div(class="container centroid")
+      //- Format Form
+      div(style="width: 100%; max-width: 800px; padding-bottom: 100px")
+        //- Form
+        h2(class="text-center mb-4") Đăng ký tài khoản
+        div(class="form-group")
+            label(for="fullname") Họ và tên:
+            input(
+                type="text"
+                onclick="ClearErrorMess()"
+                class="form-control"
+                id="fullname"
+                placeholder="Nhập họ và tên"
+                name="fullname"
+            )
+        div(class="form-group")
+            label(for="phone") Số điện thoại:
+            input(
+                type="text"
+                onclick="ClearErrorMess()"
+                class="form-control"
+                id="phone"
+                placeholder="Nhập số điện thoại"
+                name="phone"
+            )
+        div(class="form-group")
+            label(for="birth") Năm sinh:
+            input(
+                type="text"
+                onclick="ClearErrorMess()"
+                class="form-control"
+                id="birth"
+                placeholder="Nhập năm sinh"
+                name="birth"
+            )
+        div(class="form-group")
+            label(for="address") Địa chỉ:
+            input(
+                type="text"
+                onclick="ClearErrorMess()"
+                class="form-control"
+                id="address"
+                placeholder="Nhập địa chỉ"
+                name="address"
+            )
+        div(class="form-group")
+            label(for="idnum") Số CMND:
+            input(
+                type="text"
+                onclick="ClearErrorMess()"
+                class="form-control"
+                id="idnum"
+                placeholder="Nhập số CMND"
+                name="idnum"
+            )
+        div(class="form-group")
+            label(for="username") Tên tài khoản:
+            input(
+                type="text"
+                onblur="checkExistUserName('username')"
+                onclick="ClearErrorMess()"
+                class="form-control"
+                id="username"
+                placeholder="Nhập tên tài khoản"
+                name="username"
+            )
+        div(class="form-group")
+            label(for="pwd") Mật khẩu:
+            input(
+                type="password"
+                onclick="ClearErrorMess()"
+                class="form-control"
+                id="pwd"
+                placeholder="Nhập mật khẩu"
+                name="pwd"
+            )
+        div(class="form-group")
+            label(for="cfpwd") Xác nhận mật khẩu:
+            input(
+                type="password"
+                onclick="ClearErrorMess()"
+                class="form-control"
+                id="cfpwd"
+                placeholder="Nhập xác nhận mật khẩu"
+                name="cfpwd"
+            )
+
+        //- Buttons
+        p(id="ErrorMess")
+        button(
+            onclick="CheckInputSignUp()"
+            type="submit"
+            class="btn btn-dark"
+            style="width: 120px"
+        ) Đăng ký
+        button(onclick="ResetInput()" class="btn" style="background-color: white;") Làm mới
+        a(
+            href="login.html"
+            style="float: right"
+            type="submit"
+            class="btn btn-dark"
+        ) Back
