@@ -27,13 +27,12 @@ block content
         ) Back
 
         //- Form
-        div
+        form(action="/auth/login", method="post") 
             h2 Đăng nhập
             br
             div(class="form-group")
                 input(
                     type="text"
-                    onclick="ClearErrorMess()"
                     class="form-control"
                     id="username"
                     placeholder="Nhập tên tài khoản"
@@ -42,18 +41,25 @@ block content
             div(class="form-group")
                 input(
                     type="password"
-                    onclick="ClearErrorMess()"
                     class="form-control"
                     id="pwd"
                     placeholder="Nhập mật khẩu"
                     name="pwd"
                 )
-            p(id="ErrorMess")
+            
+            if (error && error.length > 0)
+                p(class="text-danger") #{error}
+            
             div
                 p Chưa có tài khoản? 
                     a(href="/auth/register") Tạo ngay
             button(
-                onclick="handleLogin()"
                 type="submit"
                 class="btn btn-primary width100Percent"
             ) Đăng nhập
+
+    if (success && success.length > 0)
+        div(class="mb-0 alert alert-success alert-dismissible fade show" style="position: absolute; bottom: 1.5rem; right: 1.5rem" role="alert")
+            strong #{success}
+            button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                span(aria-hidden="true") &times;
