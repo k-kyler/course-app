@@ -159,5 +159,11 @@ module.exports.postLogin = async (req, res) => {
     });
 
     // Redirect user to dashboard
-    res.redirect("/dashboard");
+    if (user.role === 5) {
+        res.redirect("/dashboard/admin");
+    } else if (user.role === 4) {
+        res.redirect("/dashboard/student");
+    } else if (user.role === 2) {
+        res.redirect("/dashboard/teacher");
+    }
 };

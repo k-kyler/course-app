@@ -47,7 +47,7 @@ mongoose.connect(process.env.MONGO_URL, {
 app.get("/", (req, res) => {
     if (req.signedCookies.userName) {
         res.render("index", {
-            userName: req.signedCookies.userName,
+            userFullName: req.signedCookies.userName,
         });
     } else {
         res.render("index");
