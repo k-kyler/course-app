@@ -115,7 +115,7 @@ module.exports.login = (req, res) => {
 module.exports.postLogin = async (req, res) => {
     // Get form input data
     let email = req.body.email;
-    let password = req.body.password;
+    let password = req.body.pwd;
 
     // Hashed input password
     let hashedPassword = md5(password);
@@ -132,7 +132,7 @@ module.exports.postLogin = async (req, res) => {
                 password,
             },
         });
-        res.redirect("/login");
+        res.redirect("/auth/login");
         return;
     }
 
@@ -145,7 +145,7 @@ module.exports.postLogin = async (req, res) => {
                 password,
             },
         });
-        res.redirect("/login");
+        res.redirect("/auth/login");
         return;
     }
 
@@ -154,7 +154,7 @@ module.exports.postLogin = async (req, res) => {
         signed: true,
     });
 
-    res.cookie("userName", user.name, {
+    res.cookie("userFullName", user.fullname, {
         signed: true,
     });
 
