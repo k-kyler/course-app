@@ -20,14 +20,14 @@ block content
                         li(class="nav-item")
                             a(class="nav-link" href="/dashboard/admin/course") Quản lý khóa học
                         div(class="dropdown-divider")
-                        li(class="nav-item active")
-                            a(class="nav-link" href="#") Quản lý lịch học và thi
+                        li(class="nav-item")
+                            a(class="nav-link" href="/dashboard/admin/schedule") Quản lý lịch học và thi
                         div(class="dropdown-divider")
                         li(class="nav-item")
                             a(class="nav-link" href="/dashboard/admin/student") Quản lý học viên
                         div(class="dropdown-divider")
-                        li(class="nav-item")
-                            a(class="nav-link" href="/dashboard/admin/teacher") Quản lý giảng viên
+                        li(class="nav-item active")
+                            a(class="nav-link" href="#") Quản lý giảng viên
                         div(class="dropdown-divider")
                         li(class="nav-item")
                             a(class="nav-link" href="/") Về trang chủ
@@ -38,56 +38,27 @@ block content
 
             //- DataGridView
             div(class="col-sm-9 col-md-9 col-lg-9 col-xl-9")
-                div(class="container-fluid")
-                    div(class="row")
-                        div(class="col-md-12")
-                            h4
-                                img(src="/img/studySchedule_icon.png" width="40" height="40" alt="folder icon")
-                                span &nbsp;&nbsp;Quản lý lịch học
-                            //- Study Schedule Info
-                            span(onclick="openFormS()" class="l-btn noselect") Thêm lịch học
-                            table(id="MyTable" class="table table-hover")
-                                thead
-                                    tr
-                                        th Tên khóa học
-                                        th Phòng
-                                        th Thứ
-                                        th Thời gian
-                                        th Điều khiển
+                h4
+                    img(src="/img/student_icon.png" width="40" height="40" alt="folder icon")
+                    span &nbsp;&nbsp;Quản lý giảng viên
+                //- Teacher Info
+                span(onclick="openForm()" class="l-btn noselect") Thêm mới thông tin giảng viên
+                table(id="MyTable" class="table table-hover")
+                    thead
+                        tr
+                            th Họ và tên
+                            th Email
+                            th Địa chỉ
+                            th Số Điện thoại
+                            th Điều khiển
 
-                                tbody(id="schedule-list")
-
-                            br
-                            br
-                            br
-
-                        div(class="col-md-12")
-                            h4(style="padding-left: 15px")
-                            img(
-                                src="/img/examSchedule_icon.png"
-                                width="40"
-                                height="40"
-                                alt="folder icon"
-                            ) 
-                            span &nbsp;&nbsp;Quản lý Lịch thi
-                            //- Exam Schedule Info
-                            span(onclick="openFormE()" class="l-btn noselect") Thêm Lịch thi
-                            table(id="MyTable" class="table table-hover")
-                                thead
-                                    tr
-                                        th Tên khóa học
-                                        th Phòng thi
-                                        th Ngày thi
-                                        th Thời gian
-                                        th Điều khiển
-
-                                tbody(id="examSchedule-list")
+                    tbody(id="teacher-list")
 
     br
     br
     br
     br
-
+    
     //- Footer
     #footer.centroid
         .container-fluid.pt-2

@@ -19,10 +19,10 @@ const session = require("express-session");
 // Require routes
 const authRoute = require("./routes/auth.route");
 const infoRoute = require("./routes/info.route");
-const dashboardRoute = require("./routes/dashboard.route");
+const adminDashboardRoute = require("./routes/adminDashboard.route");
 
 // Require custom middlewares
-const authMiddleware = require("./middlewares/auth.middleware");
+// const authMiddleware = require("./middlewares/auth.middleware");
 const isAuthMiddleware = require("./middlewares/isAuth.middleware");
 
 // App setup
@@ -62,13 +62,9 @@ app.get("/logout", (req, res) => {
 });
 
 // Use routes
-app.use("/auth", isAuthMiddleware.preventWhenLogged, authRoute);
-app.use("/info", infoRoute);
-app.use(
-    "/dashboard",
-    //  authMiddleware.requireAuth,
-    dashboardRoute
-);
+app.use("/auth", isAuthMiddleware.preventWhenLogged, authRoute); // Login and register routes
+app.use("/info", infoRoute); // info routes of courses and teachers
+app.use("/dashboard/admin", adminDashboardRoute); // Admin routes
 
 // Server listen
 app.listen(port, () => {

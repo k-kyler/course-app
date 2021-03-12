@@ -26,3 +26,21 @@ module.exports.adminSchedule = async (req, res) => {
         user,
     });
 };
+
+// Student
+module.exports.adminStudent = async (req, res) => {
+    let user = await User.findById(req.signedCookies.userId);
+
+    res.render("dashboards/admin-staff/student", {
+        user,
+    });
+};
+
+// Teacher
+module.exports.adminTeacher = async (req, res) => {
+    let user = await User.findById(req.signedCookies.userId);
+
+    res.render("dashboards/admin-staff/teacher", {
+        user,
+    });
+};
