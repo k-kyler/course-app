@@ -7,11 +7,11 @@ module.exports.preventWhenLogged = async (req, res, next) => {
         let user = await User.findById(req.signedCookies.userId);
         let role = await Role.findOne({ number: user.role });
 
-        if (role === 5) {
+        if (role.number === 5) {
             res.redirect("/dashboard/admin");
-        } else if (role === 4) {
+        } else if (role.number === 4) {
             res.redirect("/dashboard/student");
-        } else if (role === 2) {
+        } else if (role.number === 2) {
             res.redirect("/dashboard/teacher");
         }
     } else {

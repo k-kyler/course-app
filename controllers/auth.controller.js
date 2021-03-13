@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const Role = require("../models/role.model");
 const md5 = require("md5");
 const { validationResult } = require("express-validator");
 
@@ -123,6 +124,9 @@ module.exports.postLogin = async (req, res) => {
     // Find user info by input email
     let user = await User.findOne({ email: email });
 
+    // Get role data
+    let role = await Role.findOne({ number: user.role });
+
     // Check empty
     if (email === "") {
         req.flash("errorLogIn", {
@@ -207,4 +211,12 @@ module.exports.postLogin = async (req, res) => {
     res.cookie("userFullName", user.fullname, {
         signed: true,
     });
+
+    if (role.number === 5) {
+        res.redirect("/dashboard/admin");
+    } else if (role.number === 4) {
+        res.redirect("/dashboard/student");
+    } else if (role.number === 2) {
+        res.redirect("/dashboard/teacher");
+    }
 };
