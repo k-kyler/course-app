@@ -12,7 +12,10 @@ block content
                             br
                             img(src="/img/ava3.png" style="border-radius: 50%; height: 50%; width: 50%; display: block; margin-left: auto; margin-right: auto;")
                             li(class="nav-item")
-                            p(class="nav-link" style="text-align: center;") Admin
+
+                            if user
+                                p(class="nav-link" style="text-align: center;") #{user.fullname}
+                        
                         br
                         li(class="nav-item active")
                             a(class="nav-link" href="#") Quản lý thông báo

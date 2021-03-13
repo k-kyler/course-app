@@ -12,10 +12,13 @@ block content
                             br
                             img(src="/img/ava3.png" style="border-radius: 50%; height: 50%; width: 50%; display: block; margin-left: auto; margin-right: auto;")
                             li(class="nav-item")
-                            p(class="nav-link" style="text-align: center;") Admin
+
+                            if user
+                                p(class="nav-link" style="text-align: center;") #{user.fullname}
+                                
                         br
                         li(class="nav-item")
-                            a(class="nav-link" href="/dashboard/admin/notification") Quản lý thông báo
+                            a(class="nav-link" href="/dashboard/admin") Quản lý thông báo
                         div(class="dropdown-divider")
                         li(class="nav-item active")
                             a(class="nav-link" href="#") Quản lý khóa học
