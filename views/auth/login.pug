@@ -25,24 +25,45 @@ block content
         form(action="/auth/login", method="post") 
             h2 Đăng nhập
             br
-            div(class="form-group")
-                input(
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    placeholder="Nhập email"
-                    name="email"
-                )
-            div(class="form-group")
-                input(
-                    type="password"
-                    class="form-control"
-                    id="pwd"
-                    placeholder="Nhập mật khẩu"
-                    name="pwd"
-                )
+
+            if logInData
+                div(class="form-group")
+                    input(
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="Nhập email"
+                        name="email"
+                        value=logInData.email
+                    )
+                div(class="form-group")
+                    input(
+                        type="password"
+                        class="form-control"
+                        id="pwd"
+                        placeholder="Nhập mật khẩu"
+                        name="pwd"
+                        value=logInData.password
+                    )
+            else
+                div(class="form-group")
+                    input(
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="Nhập email"
+                        name="email"
+                    )
+                div(class="form-group")
+                    input(
+                        type="password"
+                        class="form-control"
+                        id="pwd"
+                        placeholder="Nhập mật khẩu"
+                        name="pwd"
+                    )
             
-            if (error && error.length > 0)
+            if (error)
                 p(class="text-danger") #{error}
             
             div

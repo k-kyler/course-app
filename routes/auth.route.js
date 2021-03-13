@@ -2,7 +2,7 @@ const express = require("express");
 const controller = require("../controllers/auth.controller");
 const { check } = require("express-validator");
 
-const validators = [
+const registerValidators = [
     check("fullname")
         .exists()
         .withMessage("Vui lòng nhập họ tên")
@@ -55,7 +55,7 @@ const validators = [
 let router = express.Router();
 
 router.get("/register", controller.register);
-router.post("/register", validators, controller.postRegister);
+router.post("/register", registerValidators, controller.postRegister);
 router.get("/login", controller.login);
 router.post("/login", controller.postLogin);
 

@@ -45,9 +45,9 @@ mongoose.connect(process.env.MONGO_URL, {
 
 // Default app endpoint
 app.get("/", (req, res) => {
-    if (req.signedCookies.userName) {
+    if (req.signedCookies.userFullName) {
         res.render("index", {
-            userFullName: req.signedCookies.userName,
+            userFullName: req.signedCookies.userFullName,
         });
     } else {
         res.render("index");
@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
 // User log out endpoint
 app.get("/logout", (req, res) => {
     res.clearCookie("userId");
-    res.clearCookie("userName");
+    res.clearCookie("userFullName");
     res.redirect("/");
 });
 

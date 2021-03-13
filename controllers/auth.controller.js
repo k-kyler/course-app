@@ -98,17 +98,17 @@ module.exports.login = (req, res) => {
     let registerSuccessful = req.flash("registerSuccessful");
     let error = req.flash("errorLogIn")[0];
 
-    if (registerSuccessful) {
-        res.render("auth/login", {
-            success: registerSuccessful,
-        });
-    } else if (error) {
+    if (error) {
         res.render("auth/login", {
             error: error.error,
             logInData: error.logInData,
         });
-    } else {
+    } else if (!error) {
         res.render("auth/login");
+    } else if (registerSuccessful) {
+        res.render("auth/login", {
+            success: registerSuccessful,
+        });
     }
 };
 
@@ -123,10 +123,48 @@ module.exports.postLogin = async (req, res) => {
     // Find user info by input email
     let user = await User.findOne({ email: email });
 
+    // Check empty
+    if (email === "") {
+        req.flash("errorLogIn", {
+            error: "Email không được bỏ trống",
+            logInData: {
+                email,
+                password,
+            },
+        });
+        res.redirect("/auth/login");
+        return;
+    }
+
+    if (password === "") {
+        req.flash("errorLogIn", {
+            error: "Mật khẩu không được bỏ trống",
+            logInData: {
+                email,
+                password,
+            },
+        });
+        res.redirect("/auth/login");
+        return;
+    }
+
+    // Check email
+    if (!email.includes("@")) {
+        req.flash("errorLogIn", {
+            error: "Email không hợp lệ",
+            logInData: {
+                email,
+                password,
+            },
+        });
+        res.redirect("/auth/login");
+        return;
+    }
+
     // Check user info
     if (!user) {
         req.flash("errorLogIn", {
-            error: "Account does not exist",
+            error: "Tài khoản không tồn tại",
             logInData: {
                 email,
                 password,
@@ -139,7 +177,19 @@ module.exports.postLogin = async (req, res) => {
     // Check user input password
     if (user.password !== hashedPassword) {
         req.flash("errorLogIn", {
-            error: "Wrong password",
+            error: "Sai mật khẩu",
+            logInData: {
+                email,
+                password,
+            },
+        });
+        res.redirect("/auth/login");
+        return;
+    }
+
+    if (password.length < 6) {
+        req.flash("errorLogIn", {
+            error: "Mật khẩu phải ít nhất 6 ký tự",
             logInData: {
                 email,
                 password,
@@ -157,13 +207,4 @@ module.exports.postLogin = async (req, res) => {
     res.cookie("userFullName", user.fullname, {
         signed: true,
     });
-
-    // Redirect user to dashboard
-    if (user.role === 5) {
-        res.redirect("/dashboard/admin");
-    } else if (user.role === 4) {
-        res.redirect("/dashboard/student");
-    } else if (user.role === 2) {
-        res.redirect("/dashboard/teacher");
-    }
 };
