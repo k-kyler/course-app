@@ -1,0 +1,51 @@
+//- Add notification modal
+#addNotificationModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title Thêm thông báo mới
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                form
+                    div.form-group.row
+                        label(class="col-md-12 col-form-label", for="notificationName") Tên thông báo
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="notificationName")
+
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="notificationContent") Nội dung
+                        div(class="col-md-12")
+                            textarea(rows="7", type="text", class="form-control", id="notificationContent")
+                    
+                    p(class="text-success" id="addNotificationSuccess")
+                    p(class="text-danger" id="addNotificationFailed")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-primary", id="addNotificationButton") Thêm
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+
+//- Edit notification modal
+#editNotificationModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title Cập nhật thông báo
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                form
+                    div.form-group.row
+                        label(class="col-md-12 col-form-label", for="editNotificationName") Tên thông báo
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="editNotificationName")
+
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="editNotificationContent") Nội dung
+                        div(class="col-md-12")
+                            textarea(rows="7", type="text", class="form-control", id="editNotificationContent")
+                    
+                    p(class="text-success" id="editNotificationSuccess")
+                    p(class="text-danger" id="editNotificationFailed")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-success", id="editNotificationButton") Cập nhật
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng

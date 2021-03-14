@@ -1,11 +1,14 @@
 const User = require("../models/user.model");
+const Notification = require("../models/notification.model");
 
 // Notification
 module.exports.adminNotification = async (req, res) => {
     let user = await User.findById(req.signedCookies.userId);
+    let notifications = await Notification.find();
 
     res.render("dashboards/admin-staff/notification", {
         user,
+        notifications,
     });
 };
 

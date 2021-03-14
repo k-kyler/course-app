@@ -45,7 +45,7 @@ block content
                     img(src="/img/notificationList_icon.png" width="40" height="40" alt="folder icon")
                     span &nbsp;&nbsp;Quản lý thông báo
                 //- Notification List
-                span(onclick="openForm()" class="l-btn noselect") Thêm thông báo mới
+                span(class="l-btn noselect" id="addNotification") Thêm thông báo mới
                 table(id="MyTable" class="table table-hover")
                     thead
                         tr
@@ -53,7 +53,15 @@ block content
                             th Ngày đăng
                             th Điều khiển
 
-                    tbody(id="notify-list")
+                    tbody(id="notificationsList")
+                        if notifications
+                            each notification in notifications
+                                tr(id=notification.notificationId)
+                                    td= notification.notificationName
+                                    td= notification.timestamp
+                                    td(class="d-flex")
+                                        button(type="button" class="btn btn-outline-primary editNotification" data-notificationId=notification.notificationId) Cập nhật
+                                        button(type="button" class="ml-2 btn btn-outline-danger deleteNotification" data-notificationId=notification.notificationId) Xóa
 
     br
     br
@@ -67,7 +75,7 @@ block content
                 .col-md-4.d-flex.justify-content-center.mb-4
                     //- Map Picture
                     img(src='/img/map.png', width='300', heigh='300')
-                .col-md-8
+                .col-md-8.d-flex.align-items-center
                     //- Info Footer
                     div
                         p Nhóm phát triển phần mềm KKL Edu
