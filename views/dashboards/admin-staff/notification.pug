@@ -60,7 +60,8 @@ block content
                                     td= notification.notificationName
                                     td= notification.timestamp
                                     td(class="d-flex")
-                                        button(type="button" class="btn btn-outline-primary editNotification" data-notificationId=notification.notificationId) Cập nhật
+                                        button(type="button" class="btn btn-outline-success viewNotification" data-notificationId=notification.notificationId) Chi tiết
+                                        button(type="button" class="ml-2 btn btn-outline-primary editNotification" data-notificationId=notification.notificationId) Cập nhật
                                         button(type="button" class="ml-2 btn btn-outline-danger deleteNotification" data-notificationId=notification.notificationId) Xóa
 
     br
