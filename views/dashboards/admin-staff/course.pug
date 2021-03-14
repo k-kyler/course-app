@@ -50,13 +50,23 @@ block content
                     thead
                         tr
                             th Tên khóa học
-                            th Mô tả
                             th Học phí
                             th Ngày bắt đầu
                             th Giảng viên
                             th Điều khiển
 
-                    tbody(id="course-list")
+                    tbody(id="coursesList")
+                        if courses
+                            each course in courses
+                                tr(id=course.courseId)
+                                    td= course.courseName
+                                    td= course.courseFee
+                                    td= course.courseStart
+                                    td= course.courseTeacher
+                                    td(class="d-flex")
+                                        button(type="button" class="btn btn-outline-success viewCourse" data-courseId=course.courseId) Chi tiết
+                                        button(type="button" class="ml-2 btn btn-outline-primary editCourse" data-courseId=course.courseId) Cập nhật
+                                        button(type="button" class="ml-2 btn btn-outline-danger deleteCourse" data-courseId=course.courseId) Xóa
 
     br
     br

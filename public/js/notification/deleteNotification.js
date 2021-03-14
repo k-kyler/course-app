@@ -23,7 +23,7 @@ $(document).ready(() => {
 
     // Delete notification handler
     $("body").on("click", "#deleteNotificationButton", (event) => {
-        let notificationId = $(event.target).data("notificationid");
+        let notificationId = event.target.dataset.notificationid;
 
         event.preventDefault();
         fetch(`/notification/delete/${notificationId}`, {
@@ -40,6 +40,7 @@ $(document).ready(() => {
                     setTimeout(() => {
                         $("#deleteNotificationModal").modal("hide");
                         $(`tr#${notificationId}`).remove();
+                        $("#deleteNotificationSuccess").text("");
                     }, 1000);
                 }
             })

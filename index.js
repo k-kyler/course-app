@@ -21,6 +21,7 @@ const authRoute = require("./routes/auth.route");
 const infoRoute = require("./routes/info.route");
 const adminDashboardRoute = require("./routes/adminDashboard.route");
 const notificationRoute = require("./routes/notification.route");
+const courseRoute = require("./routes/course.route");
 
 // Require custom middlewares
 const authMiddleware = require("./middlewares/auth.middleware");
@@ -67,6 +68,7 @@ app.use("/auth", isAuthMiddleware.preventWhenLogged, authRoute); // Login and re
 app.use("/info", infoRoute); // info routes of courses and teachers
 app.use("/dashboard/admin", authMiddleware.requireAuth, adminDashboardRoute); // Admin routes
 app.use("/notification", authMiddleware.requireAuth, notificationRoute); // Notification handlers routes
+app.use("/course", authMiddleware.requireAuth, courseRoute); // Course handlers routes
 
 // Server listen
 app.listen(port, () => {

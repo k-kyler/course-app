@@ -103,6 +103,7 @@ module.exports.editNotification = async (req, res) => {
     }
 };
 
+// Delete notification
 module.exports.deleteNotification = async (req, res) => {
     let { id } = req.params;
     let notification = await Notification.deleteOne({ notificationId: id });

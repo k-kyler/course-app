@@ -33,7 +33,8 @@ $(document).ready(() => {
                                 <td>${result.data.notificationName}</td>
                                 <td>${result.data.timestamp}</td>
                                 <td class="d-flex">
-                                    <button type="button" class="btn btn-outline-primary editNotification" data-notificationId=${result.data.notificationId}>Cập nhật</button>
+                                    <button type="button" class="btn btn-outline-success viewNotification" data-notificationId=${result.data.notificationId}>Chi tiết</button>
+                                    <button type="button" class="ml-2 btn btn-outline-primary editNotification" data-notificationId=${result.data.notificationId}>Cập nhật</button>
                                     <button type="button" class="ml-2 btn btn-outline-danger deleteNotification" data-notificationId=${result.data.notificationId}>Xóa</button>
                                 </td>
                             </tr>
