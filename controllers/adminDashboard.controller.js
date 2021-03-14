@@ -1,5 +1,6 @@
 const User = require("../models/user.model");
 const Notification = require("../models/notification.model");
+const Course = require("../models/course.model");
 
 // Notification
 module.exports.adminNotification = async (req, res) => {
@@ -15,9 +16,13 @@ module.exports.adminNotification = async (req, res) => {
 // Course
 module.exports.adminCourse = async (req, res) => {
     let user = await User.findById(req.signedCookies.userId);
+    let courses = await Course.find();
+    let users = await User.find();
 
     res.render("dashboards/admin-staff/course", {
         user,
+        users,
+        courses,
     });
 };
 

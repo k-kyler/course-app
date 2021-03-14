@@ -68,7 +68,8 @@ module.exports.postRegister = async (req, res) => {
         newUser.address = address;
         newUser.email = email;
         newUser.password = hashedPwd;
-        newUser.role = 0;
+        newUser.description = "";
+        newUser.role = 4;
         newUser.save();
 
         // Redirect back to login page

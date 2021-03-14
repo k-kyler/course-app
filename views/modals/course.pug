@@ -20,17 +20,23 @@
                     div.form-group.row
                         label(class="col-form-label col-md-12", for="courseFee") Học phí
                         div(class="col-md-12")
-                            textarea(rows="7", type="text", class="form-control", id="courseFee")
+                            input(type="number", class="form-control", id="courseFee")
                     
                     div.form-group.row
                         label(class="col-form-label col-md-12", for="courseStart") Ngày bắt đầu
                         div(class="col-md-12")
-                            textarea(rows="7", type="text", class="form-control", id="courseStart")
+                            input(type="text", class="form-control datepicker", id="courseStart")
                     
                     div.form-group.row
                         label(class="col-form-label col-md-12", for="courseTeacher") Giảng viên	
                         div(class="col-md-12")
-                            textarea(rows="7", type="text", class="form-control", id="courseTeacher")
+                            select(class="form-control", id="courseTeacher")
+                                option(value="") (Chọn giảng viên)
+                                
+                                if users
+                                    each user in users
+                                        if user.role === 2
+                                            option(value=user.fullname) #{user.fullname}
                     
                     p(class="text-success text-center" id="addCourseSuccess")
                     p(class="text-danger text-center" id="addCourseFailed")
