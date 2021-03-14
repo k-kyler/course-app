@@ -17,11 +17,11 @@
                         div(class="col-md-12")
                             textarea(rows="7", type="text", class="form-control", id="notificationContent")
                     
-                    p(class="text-success" id="addNotificationSuccess")
-                    p(class="text-danger" id="addNotificationFailed")
+                    p(class="text-success text-center" id="addNotificationSuccess")
+                    p(class="text-danger text-center" id="addNotificationFailed")
 
                     div.d-flex.justify-content-end
-                        button(class="btn btn-primary", id="addNotificationButton") Thêm
+                        button(class="btn btn-success", id="addNotificationButton") Thêm
                         button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
 
 //- Edit notification modal
@@ -43,9 +43,23 @@
                         div(class="col-md-12")
                             textarea(rows="7", type="text", class="form-control", id="editNotificationContent")
                     
-                    p(class="text-success" id="editNotificationSuccess")
-                    p(class="text-danger" id="editNotificationFailed")
+                    p(class="text-success text-center" id="editNotificationSuccess")
+                    p(class="text-danger text-center" id="editNotificationFailed")
 
                     div.d-flex.justify-content-end
-                        button(class="btn btn-success", id="editNotificationButton") Cập nhật
+                        button(class="btn btn-primary", id="editNotificationButton") Cập nhật
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+
+//- Delete notification modal
+#deleteNotificationModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title#deleteNotificationTitle
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                    p(class="text-success text-center" id="deleteNotificationSuccess")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-danger", id="deleteNotificationButton") Xóa
                         button(class="btn btn-default ml-3", data-dismiss="modal") Đóng

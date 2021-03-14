@@ -102,3 +102,13 @@ module.exports.editNotification = async (req, res) => {
         });
     }
 };
+
+module.exports.deleteNotification = async (req, res) => {
+    let { id } = req.params;
+    let notification = await Notification.deleteOne({ notificationId: id });
+
+    res.json({
+        code: 1,
+        message: "Xóa thông báo thành công",
+    });
+};

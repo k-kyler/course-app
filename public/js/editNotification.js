@@ -1,6 +1,6 @@
 $(document).ready(() => {
     // Show edit notification data
-    $(".editNotification").click((event) => {
+    $("body").on("click", ".editNotification", (event) => {
         let notificationId = $(event.target).data("notificationid");
 
         event.preventDefault();
@@ -31,7 +31,7 @@ $(document).ready(() => {
     });
 
     // Edit notification handler
-    $("#editNotificationButton").click((event) => {
+    $("body").on("click", "#editNotificationButton", (event) => {
         let notificationId = $(event.target).data("notificationid");
 
         event.preventDefault();
