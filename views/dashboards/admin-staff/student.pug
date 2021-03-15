@@ -45,8 +45,8 @@ block content
                     img(src="/img/student_icon.png" width="40" height="40" alt="folder icon")
                     span &nbsp;&nbsp;Quản lý học viên
                 //- Student Info
-                span(onclick="openForm()" class="l-btn noselect") Thêm mới thông tin học viên
-                table(id="MyTable" class="table table-hover")
+                span(class="l-btn noselect" id="addStudent") Thêm mới thông tin học viên
+                table(id="MyTable" class="table table-hover table-responsive")
                     thead
                         tr
                             th Họ và tên
@@ -55,7 +55,19 @@ block content
                             th Số Điện thoại
                             th Điều khiển
 
-                    tbody(id="student-list")
+                    tbody(id="studentsList")
+                        if users
+                            each user in users
+                                if user.role == 4
+                                    tr(id=user.studentId)
+                                        td= user.fullname
+                                        td= user.email
+                                        td= user.address
+                                        td= user.phone
+                                        td(class="d-flex")
+                                            button(type="button" class="btn btn-outline-success viewStudent" data-studentId=user.studentId) Chi tiết
+                                            button(type="button" class="ml-2 btn btn-outline-primary editStudent" data-studentId=user.studentId) Cập nhật
+                                            button(type="button" class="ml-2 btn btn-outline-danger deleteStudent" data-studentId=user.studentId) Xóa
 
     br
     br
