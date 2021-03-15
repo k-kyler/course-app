@@ -72,6 +72,7 @@ module.exports.addTeacher = async (req, res) => {
         teacher.password = md5(password);
         teacher.description = description;
         teacher.address = address;
+        teacher.studentId = "";
         teacher.role = 2;
         teacher.save();
 

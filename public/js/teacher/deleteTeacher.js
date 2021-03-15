@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    // Show delete notification modal
+    // Show delete teacher modal
     $("body").on("click", ".deleteTeacher", (event) => {
         let teacherId = $(event.target).data("teacherid");
 
@@ -18,7 +18,7 @@ $(document).ready(() => {
         $("#deleteTeacherModal").modal("toggle");
     });
 
-    // Delete notification handler
+    // Delete teacher handler
     $("body").on("click", "#deleteTeacherButton", (event) => {
         let teacherId = event.target.dataset.teacherid;
 

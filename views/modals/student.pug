@@ -1,0 +1,95 @@
+//- Add student modal
+#addStudentModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title Thêm mới thông tin học viên
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                form
+                    div.form-group.row
+                        label(class="col-md-12 col-form-label", for="studentFullname") Họ và tên
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="studentFullname")
+                    
+                    div.form-group.row
+                        label(class="col-md-12 col-form-label", for="studentEmail") Email
+                        div(class="col-md-12")
+                            input(type="email", class="form-control", id="studentEmail")
+
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="studentAddress") Địa chỉ
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="studentAddress")
+                    
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="studentPhone") Số Điện thoại
+                        div(class="col-md-12")
+                            input(type="tel", class="form-control", id="studentPhone")
+                    
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="studentPassword") Mật khẩu	
+                        div(class="col-md-12")
+                            input(type="password", class="form-control", id="studentPassword")
+                    
+                    p(class="text-success text-center" id="addStudentSuccess")
+                    p(class="text-danger text-center" id="addStudentFailed")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-success", id="addStudentButton") Thêm
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+
+//- Edit student modal
+#editStudentModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title Cập nhật học viên
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                form
+                    div.form-group.row
+                        label(class="col-md-12 col-form-label", for="editStudentFullname") Họ và tên
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="editStudentFullname")
+                    
+                    div.form-group.row
+                        label(class="col-md-12 col-form-label", for="editStudentEmail") Email
+                        div(class="col-md-12")
+                            input(type="email", class="form-control", id="editStudentEmail")
+
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="editStudentAddress") Địa chỉ
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="editStudentAddress")
+                    
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="editStudentPhone") Số Điện thoại
+                        div(class="col-md-12")
+                            input(type="tel", class="form-control", id="editStudentPhone")
+   
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="editStudentPassword") Mật khẩu mới
+                        div(class="col-md-12")
+                            input(type="password", class="form-control", id="editStudentPassword")
+                    
+                    p(class="text-success text-center" id="editStudentSuccess")
+                    p(class="text-danger text-center" id="editStudentFailed")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-primary", id="editStudentButton") Cập nhật
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+
+//- Delete student modal
+#deleteStudentModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title#deleteStudentTitle
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                    p(class="text-success text-center" id="deleteStudentSuccess")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-danger", id="deleteStudentButton") Xóa
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng

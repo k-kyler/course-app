@@ -19,7 +19,7 @@ $(document).ready(() => {
                     $("#editFullname").val("");
                     $("#editEmail").val("");
                     $("#editPhone").val("");
-                    $("#editEmail").val("");
+                    $("#editDescription").val("");
                     $("#editPassword").val("");
                     $("#editAddress").val("");
                     $("#editTeacherSuccess").text("");

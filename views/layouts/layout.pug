@@ -5,8 +5,12 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title KKL Edu
-        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin="anonymous")
         link(rel='icon', type='image/png', sizes='16x16', href='/img/favicon.png')
+
+        //- Bootstrap 4 styles
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin="anonymous")
+
+        //- My styles
         link(rel='stylesheet', type='text/css', href='/css/style.css')
         link(rel='stylesheet', type='text/css', href='/css/cardInfo.css')
         link(rel="stylesheet" type="text/css" href="/css/temp.css")
@@ -20,10 +24,13 @@ html(lang="en")
         //- Course modals
         include ../modals/course
 
+        //- Student modals
+        include ../modals/student
+
         //- Teacher modals
         include ../modals/teacher
 
-        //- Log out modal
+        //- Log out modal & handler
         #logoutModal.modal.fade(role='dialog')
             .modal-dialog.modal-lg(role='content')
                 .modal-content
@@ -33,7 +40,8 @@ html(lang="en")
                     .modal-body.d-flex.justify-content-end
                         button(class="btn btn-danger", id="modalLogoutButton") Đăng xuất
                         button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
-
+        
+        //- Bootstrap 4, Fontawesome & Log out scripts
         script(src="https://kit.fontawesome.com/a65ad4e019.js", crossorigin="anonymous")
         script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js", integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", crossorigin="anonymous")
@@ -53,7 +61,6 @@ html(lang="en")
         script(src="/js/course/deleteCourse.js") 
 
         //- Student client
-        script(src="/js/student/viewStudent.js") 
         script(src="/js/student/addStudent.js") 
         script(src="/js/student/editStudent.js") 
         script(src="/js/student/deleteStudent.js") 

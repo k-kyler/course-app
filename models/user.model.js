@@ -8,6 +8,7 @@ let userSchema = new mongoose.Schema({
     address: String,
     description: String,
     teacherId: String,
+    studentId: String,
     role: Number,
 });
 

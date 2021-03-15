@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    // Show view notification modal
+    // Show view teacher modal
     $("body").on("click", ".viewTeacher", (event) => {
         let teacherId = $(event.target).data("teacherid");
 
