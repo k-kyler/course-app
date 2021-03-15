@@ -47,8 +47,10 @@ module.exports.adminStudent = async (req, res) => {
 // Teacher
 module.exports.adminTeacher = async (req, res) => {
     let user = await User.findById(req.signedCookies.userId);
+    let users = await User.find();
 
     res.render("dashboards/admin-staff/teacher", {
         user,
+        users,
     });
 };

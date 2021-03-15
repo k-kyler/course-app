@@ -45,7 +45,7 @@ block content
                     img(src="/img/student_icon.png" width="40" height="40" alt="folder icon")
                     span &nbsp;&nbsp;Quản lý giảng viên
                 //- Teacher Info
-                span(onclick="openForm()" class="l-btn noselect") Thêm mới thông tin giảng viên
+                span(id="addTeacher" class="l-btn noselect") Thêm mới thông tin giảng viên
                 table(id="MyTable" class="table table-hover")
                     thead
                         tr
@@ -55,7 +55,19 @@ block content
                             th Số Điện thoại
                             th Điều khiển
 
-                    tbody(id="teacher-list")
+                    tbody(id="teachersList")
+                        if users
+                            each user in users
+                                if user.role == 2
+                                    tr(id=user.teacherId)
+                                        td= user.fullname
+                                        td= user.email
+                                        td= user.address
+                                        td= user.phone
+                                        td(class="d-flex")
+                                            button(type="button" class="btn btn-outline-success viewTeacher" data-teacherId=user.teacherId) Chi tiết
+                                            button(type="button" class="ml-2 btn btn-outline-primary editTeacher" data-teacherId=user.teacherId) Cập nhật
+                                            button(type="button" class="ml-2 btn btn-outline-danger deleteTeacher" data-teacherId=user.teacherId) Xóa
 
     br
     br

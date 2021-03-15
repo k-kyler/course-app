@@ -69,6 +69,7 @@ module.exports.postRegister = async (req, res) => {
         newUser.email = email;
         newUser.password = hashedPwd;
         newUser.description = "";
+        newUser.teacherId = "";
         newUser.role = 4;
         newUser.save();
 

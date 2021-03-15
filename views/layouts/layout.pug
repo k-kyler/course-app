@@ -20,6 +20,9 @@ html(lang="en")
         //- Course modals
         include ../modals/course
 
+        //- Teacher modals
+        include ../modals/teacher
+
         //- Log out modal
         #logoutModal.modal.fade(role='dialog')
             .modal-dialog.modal-lg(role='content')
@@ -43,8 +46,14 @@ html(lang="en")
         script(src="/js/notification/editNotification.js") 
         script(src="/js/notification/deleteNotification.js") 
 
-        //- Notification client
+        //- Course client
         script(src="/js/course/viewCourse.js") 
         script(src="/js/course/addCourse.js") 
         script(src="/js/course/editCourse.js") 
         script(src="/js/course/deleteCourse.js") 
+
+        //- Teacher client
+        script(src="/js/teacher/viewTeacher.js") 
+        script(src="/js/teacher/addTeacher.js") 
+        script(src="/js/teacher/editTeacher.js") 
+        script(src="/js/teacher/deleteTeacher.js") 

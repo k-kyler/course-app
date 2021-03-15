@@ -7,6 +7,7 @@ let userSchema = new mongoose.Schema({
     phone: String,
     address: String,
     description: String,
+    teacherId: String,
     role: Number,
 });
 

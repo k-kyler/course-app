@@ -1,99 +1,99 @@
-//- Add course modal
-#addCourseModal.modal.fade(role='dialog')
-    .modal-dialog.modal-lg(role='content')
-        .modal-content
-            .modal-header
-                h4.modal-title Thêm khóa học mới
-                button.close(type='close', data-dismiss='modal') &times;
-            .modal-body
-                form
-                    div.form-group.row
-                        label(class="col-md-12 col-form-label", for="courseName") Tên khóa học
-                        div(class="col-md-12")
-                            input(type="text", class="form-control", id="courseName")
+//- //- Add course modal
+//- #addCourseModal.modal.fade(role='dialog')
+//-     .modal-dialog.modal-lg(role='content')
+//-         .modal-content
+//-             .modal-header
+//-                 h4.modal-title Thêm khóa học mới
+//-                 button.close(type='close', data-dismiss='modal') &times;
+//-             .modal-body
+//-                 form
+//-                     div.form-group.row
+//-                         label(class="col-md-12 col-form-label", for="courseName") Tên khóa học
+//-                         div(class="col-md-12")
+//-                             input(type="text", class="form-control", id="courseName")
                     
-                    div.form-group.row
-                        label(class="col-md-12 col-form-label", for="courseDescription") Mô tả
-                        div(class="col-md-12")
-                            input(type="text", class="form-control", id="courseDescription")
+//-                     div.form-group.row
+//-                         label(class="col-md-12 col-form-label", for="courseDescription") Mô tả
+//-                         div(class="col-md-12")
+//-                             input(type="text", class="form-control", id="courseDescription")
 
-                    div.form-group.row
-                        label(class="col-form-label col-md-12", for="courseFee") Học phí
-                        div(class="col-md-12")
-                            input(type="number", class="form-control", id="courseFee")
+//-                     div.form-group.row
+//-                         label(class="col-form-label col-md-12", for="courseFee") Học phí
+//-                         div(class="col-md-12")
+//-                             input(type="number", class="form-control", id="courseFee")
                     
-                    div.form-group.row
-                        label(class="col-form-label col-md-12", for="courseStart") Ngày bắt đầu
-                        div(class="col-md-12")
-                            input(type="text", class="form-control datepicker", id="courseStart")
+//-                     div.form-group.row
+//-                         label(class="col-form-label col-md-12", for="courseStart") Ngày bắt đầu
+//-                         div(class="col-md-12")
+//-                             input(type="text", class="form-control datepicker", id="courseStart")
                     
-                    div.form-group.row
-                        label(class="col-form-label col-md-12", for="courseTeacher") Giảng viên	
-                        div(class="col-md-12")
-                            select(class="form-control", id="courseTeacher")
-                                option(value="") (Chọn giảng viên)
+//-                     div.form-group.row
+//-                         label(class="col-form-label col-md-12", for="courseTeacher") Giảng viên	
+//-                         div(class="col-md-12")
+//-                             select(class="form-control", id="courseTeacher")
+//-                                 option(value="") (Chọn giảng viên)
                                 
-                                if users
-                                    each user in users
-                                        if user.role === 2
-                                            option(value=user.fullname) #{user.fullname}
+//-                                 if users
+//-                                     each user in users
+//-                                         if user.role === 2
+//-                                             option(value=user.fullname) #{user.fullname}
                     
-                    p(class="text-success text-center" id="addCourseSuccess")
-                    p(class="text-danger text-center" id="addCourseFailed")
+//-                     p(class="text-success text-center" id="addCourseSuccess")
+//-                     p(class="text-danger text-center" id="addCourseFailed")
 
-                    div.d-flex.justify-content-end
-                        button(class="btn btn-success", id="addCourseButton") Thêm
-                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+//-                     div.d-flex.justify-content-end
+//-                         button(class="btn btn-success", id="addCourseButton") Thêm
+//-                         button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
 
-//- Edit notification modal
-#editNotificationModal.modal.fade(role='dialog')
-    .modal-dialog.modal-lg(role='content')
-        .modal-content
-            .modal-header
-                h4.modal-title Cập nhật thông báo
-                button.close(type='close', data-dismiss='modal') &times;
-            .modal-body
-                form
-                    div.form-group.row
-                        label(class="col-md-12 col-form-label", for="editNotificationName") Tên thông báo
-                        div(class="col-md-12")
-                            input(type="text", class="form-control", id="editNotificationName")
+//- //- Edit notification modal
+//- #editNotificationModal.modal.fade(role='dialog')
+//-     .modal-dialog.modal-lg(role='content')
+//-         .modal-content
+//-             .modal-header
+//-                 h4.modal-title Cập nhật thông báo
+//-                 button.close(type='close', data-dismiss='modal') &times;
+//-             .modal-body
+//-                 form
+//-                     div.form-group.row
+//-                         label(class="col-md-12 col-form-label", for="editNotificationName") Tên thông báo
+//-                         div(class="col-md-12")
+//-                             input(type="text", class="form-control", id="editNotificationName")
 
-                    div.form-group.row
-                        label(class="col-form-label col-md-12", for="editNotificationContent") Nội dung
-                        div(class="col-md-12")
-                            textarea(rows="7", type="text", class="form-control", id="editNotificationContent")
+//-                     div.form-group.row
+//-                         label(class="col-form-label col-md-12", for="editNotificationContent") Nội dung
+//-                         div(class="col-md-12")
+//-                             textarea(rows="7", type="text", class="form-control", id="editNotificationContent")
                     
-                    p(class="text-success text-center" id="editNotificationSuccess")
-                    p(class="text-danger text-center" id="editNotificationFailed")
+//-                     p(class="text-success text-center" id="editNotificationSuccess")
+//-                     p(class="text-danger text-center" id="editNotificationFailed")
 
-                    div.d-flex.justify-content-end
-                        button(class="btn btn-primary", id="editNotificationButton") Cập nhật
-                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+//-                     div.d-flex.justify-content-end
+//-                         button(class="btn btn-primary", id="editNotificationButton") Cập nhật
+//-                         button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
 
-//- Delete notification modal
-#deleteNotificationModal.modal.fade(role='dialog')
-    .modal-dialog.modal-lg(role='content')
-        .modal-content
-            .modal-header
-                h4.modal-title#deleteNotificationTitle
-                button.close(type='close', data-dismiss='modal') &times;
-            .modal-body
-                    p(class="text-success text-center" id="deleteNotificationSuccess")
+//- //- Delete notification modal
+//- #deleteNotificationModal.modal.fade(role='dialog')
+//-     .modal-dialog.modal-lg(role='content')
+//-         .modal-content
+//-             .modal-header
+//-                 h4.modal-title#deleteNotificationTitle
+//-                 button.close(type='close', data-dismiss='modal') &times;
+//-             .modal-body
+//-                     p(class="text-success text-center" id="deleteNotificationSuccess")
 
-                    div.d-flex.justify-content-end
-                        button(class="btn btn-danger", id="deleteNotificationButton") Xóa
-                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+//-                     div.d-flex.justify-content-end
+//-                         button(class="btn btn-danger", id="deleteNotificationButton") Xóa
+//-                         button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
 
-//- View notification modal
-#viewNotificationModal.modal.fade(role='dialog')
-    .modal-dialog.modal-lg(role='content')
-        .modal-content
-            .modal-header
-                h4.modal-title#viewNotificationTitle
-                button.close(type='close', data-dismiss='modal') &times;
-            .modal-body
-                    p(id="viewNotificationContent" class="text-secondary" style="word-wrap: break-word; text-align: justify;")
+//- //- View notification modal
+//- #viewNotificationModal.modal.fade(role='dialog')
+//-     .modal-dialog.modal-lg(role='content')
+//-         .modal-content
+//-             .modal-header
+//-                 h4.modal-title#viewNotificationTitle
+//-                 button.close(type='close', data-dismiss='modal') &times;
+//-             .modal-body
+//-                     p(id="viewNotificationContent" class="text-secondary" style="word-wrap: break-word; text-align: justify;")
 
-                    div.d-flex.justify-content-end
-                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+//-                     div.d-flex.justify-content-end
+//-                         button(class="btn btn-default ml-3", data-dismiss="modal") Đóng

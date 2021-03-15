@@ -1,0 +1,118 @@
+//- Add teacher modal
+#addTeacherModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title Thêm mới thông tin giảng viên
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                form
+                    div.form-group.row
+                        label(class="col-md-12 col-form-label", for="fullname") Họ và tên
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="fullname")
+                    
+                    div.form-group.row
+                        label(class="col-md-12 col-form-label", for="email") Email
+                        div(class="col-md-12")
+                            input(type="email", class="form-control", id="email")
+
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="address") Địa chỉ
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="address")
+                    
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="phone") Số Điện thoại
+                        div(class="col-md-12")
+                            input(type="tel", class="form-control", id="phone")
+
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="description") Mô tả
+                        div(class="col-md-12")
+                            input(type="tel", class="form-control", id="description")
+                    
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="password") Mật khẩu	
+                        div(class="col-md-12")
+                            input(type="password", class="form-control", id="password")
+                    
+                    p(class="text-success text-center" id="addTeacherSuccess")
+                    p(class="text-danger text-center" id="addTeacherFailed")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-success", id="addTeacherButton") Thêm
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+
+//- Edit teacher modal
+#editTeacherModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title Cập nhật giảng viên
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                form
+                    div.form-group.row
+                        label(class="col-md-12 col-form-label", for="editFullname") Họ và tên
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="editFullname")
+                    
+                    div.form-group.row
+                        label(class="col-md-12 col-form-label", for="editEmail") Email
+                        div(class="col-md-12")
+                            input(type="email", class="form-control", id="editEmail")
+
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="editAddress") Địa chỉ
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="editAddress")
+                    
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="editPhone") Số Điện thoại
+                        div(class="col-md-12")
+                            input(type="tel", class="form-control", id="editPhone")
+
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="editDescription") Mô tả
+                        div(class="col-md-12")
+                            input(type="tel", class="form-control", id="editDescription")
+                    
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="editPassword") Mật khẩu mới
+                        div(class="col-md-12")
+                            input(type="password", class="form-control", id="editPassword")
+                    
+                    p(class="text-success text-center" id="editTeacherSuccess")
+                    p(class="text-danger text-center" id="editTeacherFailed")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-primary", id="editTeacherButton") Cập nhật
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+
+//- Delete teacher modal
+#deleteTeacherModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title#deleteTeacherTitle
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                    p(class="text-success text-center" id="deleteTeacherSuccess")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-danger", id="deleteTeacherButton") Xóa
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+
+//- View teacher modal
+#viewTeacherModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title#viewTeacherTitle
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                    p(id="viewDescriptionContent" class="text-secondary" style="word-wrap: break-word; text-align: justify;")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
