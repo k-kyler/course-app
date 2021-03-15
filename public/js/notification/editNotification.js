@@ -32,7 +32,7 @@ $(document).ready(() => {
 
     // Edit notification handler
     $("body").on("click", "#editNotificationButton", (event) => {
-        let notificationId = $(event.target).data("notificationid");
+        let notificationId = event.target.dataset.notificationid;
 
         event.preventDefault();
         fetch(`/notification/edit/${notificationId}`, {

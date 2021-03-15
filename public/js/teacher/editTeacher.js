@@ -32,7 +32,7 @@ $(document).ready(() => {
 
     // Edit teacher handler
     $("body").on("click", "#editTeacherButton", (event) => {
-        let teacherId = $(event.target).data("teacherid");
+        let teacherId = event.target.dataset.teacherid;
 
         event.preventDefault();
         fetch(`/teacher/edit/${teacherId}`, {
