@@ -37,14 +37,21 @@ $(document).ready(() => {
                         $("#coursesList").append(`
                             <tr id=${result.data.courseId}>
                                 <td>${result.data.courseName}</td>
-                                <td>${result.data.courseDescription}</td>
-                                <td>${result.data.courseFee}</td>
+                                <td>${Intl.NumberFormat().format(
+                                    result.data.courseFee
+                                )}</td>
                                 <td>${result.data.courseStart}</td>
                                 <td>${result.data.courseTeacher}</td>
                                 <td class="d-flex">
-                                    <button type="button" class="btn btn-outline-success viewCourse" data-courseId=${result.data.courseId}>Chi tiết</button>
-                                    <button type="button" class="btn btn-outline-primary editCourse" data-courseId=${result.data.courseId}>Cập nhật</button>
-                                    <button type="button" class="ml-2 btn btn-outline-danger deleteCourse" data-courseId=${result.data.courseId}>Xóa</button>
+                                    <button type="button" class="btn btn-outline-success viewCourse" data-courseId=${
+                                        result.data.courseId
+                                    }>Chi tiết</button>
+                                    <button type="button" class="ml-2 btn btn-outline-primary editCourse" data-courseId=${
+                                        result.data.courseId
+                                    }>Cập nhật</button>
+                                    <button type="button" class="ml-2 btn btn-outline-danger deleteCourse" data-courseId=${
+                                        result.data.courseId
+                                    }>Xóa</button>
                                 </td>
                             </tr>
                         `);

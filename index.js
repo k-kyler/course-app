@@ -48,10 +48,13 @@ mongoose.connect(process.env.MONGO_URL, {
 });
 
 // Default app endpoint
-app.get("/", (req, res) => {
-    if (req.signedCookies.userFullName) {
+app.get("/", async (req, res) => {
+    if (req.signedCookies.userId) {
+        let User = require("./models/user.model");
+        let user = await User.findById(req.signedCookies.userId);
+
         res.render("index", {
-            userFullName: req.signedCookies.userFullName,
+            user,
         });
     } else {
         res.render("index");

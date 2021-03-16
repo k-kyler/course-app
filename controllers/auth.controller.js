@@ -210,10 +210,6 @@ module.exports.postLogin = async (req, res) => {
         signed: true,
     });
 
-    res.cookie("userFullName", user.fullname, {
-        signed: true,
-    });
-
     if (role.number === 5) {
         res.redirect("/dashboard/admin");
     } else if (role.number === 4) {

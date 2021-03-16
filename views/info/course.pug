@@ -20,14 +20,34 @@ block content
                         div
                             a.nav-link.blackText(style='color: white', href='/info/course')
                                 b Khóa học
-                    div
-                        a(href='/auth/register')
-                            button.btn(class="btn-outline-primary", type='button') Ghi danh
                     
-                    div
-                        // Login
-                        a(href='/auth/login')
-                            button.btn(class="btn-danger mx-3", type='button') Đăng nhập
+                    if user
+                        div
+                            span Hi, #{user.fullname}
+
+                        div
+                            if user.role === 5
+                                a(href='/dashboard/admin')
+                                    button.btn(class="btn-outline-primary ml-3", type='button') Thông tin
+                            else if user.role === 4
+                                a(href='/dashboard/student')
+                                    button.btn(class="btn-outline-primary ml-3", type='button') Thông tin
+                            else if user.role === 2
+                                a(href='/dashboard/teacher')
+                                    button.btn(class="btn-outline-primary ml-3", type='button') Thông tin
+                        
+                        div
+                            a(href="#" id="logoutButton")
+                                button.btn(class="btn-outline-danger mx-3", type='button') Đăng xuất
+                    else     
+                        div
+                            a(href='/auth/register')
+                                button.btn(class="btn-outline-primary", type='button') Ghi danh
+                        
+                        div
+                            // Login
+                            a(href='/auth/login')
+                                button.btn(class="btn-danger mx-3", type='button') Đăng nhập
             
             div(class="container centroid")
                 div(class="width100Percent")

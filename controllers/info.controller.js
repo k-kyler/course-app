@@ -1,13 +1,17 @@
 const User = require("../models/user.model");
 
 module.exports.infoTeacher = async (req, res) => {
-    let users = await User.find();
+    let user = await User.findById(req.signedCookies.userId);
 
     res.render("info/teacher", {
-        users,
+        user,
     });
 };
 
-module.exports.infoCourse = (req, res) => {
-    res.render("info/course");
+module.exports.infoCourse = async (req, res) => {
+    let user = await User.findById(req.signedCookies.userId);
+
+    res.render("info/course", {
+        user,
+    });
 };

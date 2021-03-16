@@ -60,7 +60,7 @@ block content
                             each course in courses
                                 tr(id=course.courseId)
                                     td= course.courseName
-                                    td= course.courseFee
+                                    td= Intl.NumberFormat().format(course.courseFee)
                                     td= course.courseStart
                                     td= course.courseTeacher
                                     td(class="d-flex")
