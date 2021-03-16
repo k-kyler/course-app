@@ -64,7 +64,6 @@ app.get("/", async (req, res) => {
 // User log out endpoint
 app.get("/logout", (req, res) => {
     res.clearCookie("userId");
-    res.clearCookie("userFullName");
     res.redirect("/");
 });
 
