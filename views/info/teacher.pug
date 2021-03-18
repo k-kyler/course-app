@@ -57,78 +57,15 @@ block content
         //- Show Teacher List
         div(class="container")
             div(class="row")
-                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
-                    div(class="user")
-                        img(src="/img/ava1.png")
-                        div(class="user-info")
-                            p(class="title") Thái Trà My
-                            span(class="position") Phó Giáo Sư - Tiến Sĩ
-                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
-                    div(class="user")
-                        img(src="/img/ava3.png")
-                        div(class="user-info")
-                            p(class="title") Phạm Văn Huy
-                            span(class="position") Tiến Sĩ
-                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
-                    div(class="user")
-                        img(src="/img/ava3.png")
-                        div(class="user-info")
-                            p(class="title") Đặng Minh Thắng
-                            span(class="position") Tiến Sĩ
-                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
-                    div(class="user")
-                        img(src="/img/ava3.png")
-                        div(class="user-info")
-                            p(class="title") Lê Văn Vang
-                            span(class="position") Thạc Sĩ - NCS
-                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
-                    div(class="user")
-                        img(src="/img/ava3.png")
-                        div(class="user-info")
-                            p(class="title") Mai Văn Mạnh
-                            span(class="position") Thạc Sĩ
-                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
-                    div(class="user")
-                        img(src="/img/ava2.png")
-                        div(class="user-info")
-                            p(class="title") Võ Hoàng Anh
-                            span(class="position") Thạc Sĩ - NCS
-                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
-                    div(class="user")
-                        img(src="/img/ava2.png")
-                        div(class="user-info")
-                            p(class="title") Hồ Thị Linh
-                            span(class="position") Thạc Sĩ
-                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
-                    div(class="user")
-                        img(src="/img/ava3.png")
-                        div(class="user-info")
-                            p(class="title") Bùi Xuân Thắng
-                            span(class="position") Thạc Sĩ
-                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
-                    div(class="user")
-                        img(src="/img/ava3.png")
-                        div(class="user-info")
-                            p(class="title") Vũ Đình Hồng
-                            span(class="position") Thạc Sĩ - NCS
-                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
-                    div(class="user")
-                        img(src="/img/ava3.png")
-                        div(class="user-info")
-                            p(class="title") Trần Trung Tín
-                            span(class="position") Thạc Sĩ - NCS
-                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
-                    div(class="user")
-                        img(src="/img/ava3.png")
-                        div(class="user-info")
-                            p(class="title") Bùi Danh Hường
-                            span(class="position") Thạc Sĩ
-                div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
-                    div(class="user")
-                        img(src="/img/ava3.png")
-                        div(class="user-info")
-                            p(class="title") Trần Lương Quốc Đại
-                            span(class="position") Thạc Sĩ
+                if users
+                    each user in users
+                        if user.role === 2
+                            div(class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12")
+                                div(class="user")
+                                    img(src="/img/ava3.png")
+                                    div(class="user-info")
+                                        p(class="title") #{user.fullname}
+                                        span(class="position") #{user.description}
 
     // Footer
     #footer.centroid

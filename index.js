@@ -20,6 +20,7 @@ const session = require("express-session");
 const authRoute = require("./routes/auth.route");
 const infoRoute = require("./routes/info.route");
 const adminDashboardRoute = require("./routes/adminDashboard.route");
+const studentDashboardRoute = require("./routes/studentDashboard.route");
 const notificationRoute = require("./routes/notification.route");
 const courseRoute = require("./routes/course.route");
 const teacherRoute = require("./routes/teacher.route");
@@ -67,14 +68,25 @@ app.get("/logout", (req, res) => {
     res.redirect("/");
 });
 
-// Use routes
+// Authentication routes
 app.use("/auth", isAuthMiddleware.preventWhenLogged, authRoute); // Login and register routes
+
+// Info routes
 app.use("/info", infoRoute); // info routes of courses and teachers
-app.use("/dashboard/admin", authMiddleware.requireAuth, adminDashboardRoute); // Admin routes
+
+// Admin routes
+app.use("/dashboard/admin", authMiddleware.requireAuth, adminDashboardRoute);
 app.use("/notification", authMiddleware.requireAuth, notificationRoute); // Notification handlers routes
 app.use("/course", authMiddleware.requireAuth, courseRoute); // Course handlers routes
 app.use("/teacher", authMiddleware.requireAuth, teacherRoute); // Teacher handlers routes
 app.use("/student", authMiddleware.requireAuth, studentRoute); // Student handlers routes
+
+// Student routes
+app.use(
+    "/dashboard/student",
+    authMiddleware.requireAuth,
+    studentDashboardRoute
+);
 
 // Server listen
 app.listen(port, () => {

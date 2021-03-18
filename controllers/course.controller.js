@@ -1,5 +1,23 @@
 const Course = require("../models/course.model");
 const { v4: v4UniqueId } = require("uuid");
+const path = require("path");
+const multer = require("multer");
+
+// Set storage engine
+const storage = multer.diskStorage({
+    destination: "./public/uploads/",
+    filename: (req, file, callback) => {
+        callback(
+            null,
+            file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+        );
+    },
+});
+
+// Initial multer
+const uploader = multer({
+    storage: storage,
+}).single("courseImage");
 
 // Get course by id
 module.exports.getCourse = async (req, res) => {
