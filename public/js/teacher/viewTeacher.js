@@ -12,7 +12,9 @@ $(document).ready(() => {
                     $("#viewTeacherTitle").html(
                         "Giảng viên " + result.data.fullname
                     );
-                    $("#viewDescriptionContent").html(result.data.description);
+                    $("#viewDescriptionContent").html(
+                        "Mô tả: " + result.data.description
+                    );
                 }
             })
             .catch((error) => console.log(error));

@@ -10,7 +10,7 @@ module.exports.preventWhenLogged = async (req, res, next) => {
         if (role.number === 5) {
             res.redirect("/dashboard/admin");
         } else if (role.number === 4) {
-            res.redirect("/dashboard/student");
+            res.redirect("/");
         } else if (role.number === 2) {
             res.redirect("/dashboard/teacher");
         }

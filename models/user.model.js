@@ -9,6 +9,11 @@ let userSchema = new mongoose.Schema({
     description: String,
     teacherId: String,
     studentId: String,
+    coursesEnrolled: [
+        {
+            courseId: String,
+        },
+    ],
     role: Number,
 });
 

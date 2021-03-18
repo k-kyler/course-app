@@ -18,16 +18,16 @@ block content
                                 
                         br
                         li(class="nav-item")
-                            a(class="nav-link" href="#") Thông báo
+                            a(class="nav-link" href="/dashboard/student") Thông báo
                         div(class="dropdown-divider")
                         li(class="nav-item active")
-                            a(class="nav-link" href="/dashboard/student/course") Khóa học
+                            a(class="nav-link" href="#") Khóa học
                         div(class="dropdown-divider")
                         li(class="nav-item")
                             a(class="nav-link" href="/dashboard/student/schedule") Lịch học và thi
                         div(class="dropdown-divider")
                         li(class="nav-item")
-                            a(class="nav-link" href="/dashboard/student/tuitionfee") Lịch học và thi
+                            a(class="nav-link" href="/dashboard/student/tuitionfee") Học phí
                         div(class="dropdown-divider")
                         li(class="nav-item")
                             a(class="nav-link" href="/") Về trang chủ
@@ -40,9 +40,8 @@ block content
             div(class="col-sm-9 col-md-9 col-lg-9 col-xl-9")
                 h4
                     img(src="/img/courseList_icon.png" width="40" height="40" alt="folder icon")
-                    span &nbsp;&nbsp;Quản lý khóa học
+                    span &nbsp;&nbsp;Khóa học đã đăng ký
                 //- Course List
-                span(id="addCourse" class="l-btn noselect") Thêm khóa học mới
                 table(id="MyTable" class="table table-hover")
                     thead
                         tr
@@ -53,16 +52,7 @@ block content
                             th
 
                     tbody(id="coursesList")
-                        if courses
-                            each course in courses
-                                tr(id=course.courseId)
-                                    td= course.courseName
-                                    td= Intl.NumberFormat().format(course.courseFee)
-                                    td= course.courseStart
-                                    td= course.courseTeacher
-                                    td(class="d-flex")
-                                        button(type="button" class="btn btn-outline-success viewCourse" data-courseId=course.courseId) Chi tiết
-
+                        
     br
     br
     br

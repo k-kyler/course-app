@@ -1,0 +1,14 @@
+//- Course enroll modal
+#courseEnrollModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title#courseEnrollTitle Khóa học...
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                    p(id="courseEnrollTeacher" style="word-wrap: break-word; text-align: justify;") Giảng viên...
+                    p(id="courseEnrollDescription" style="word-wrap: break-word; text-align: justify;") Mô tả...
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-success", disabled, id="courseEnrollButton") Đăng ký
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng

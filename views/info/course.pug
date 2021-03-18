@@ -54,7 +54,7 @@ block content
                     div(class="colorSeeDetail width100Percent centroid banner") Danh sách các Khóa học
 
     div(class="container centroid")
-        //- Show Teacher List
+        //- Show courses List
         div(class="container")
             div(class="row")
                 if courses
@@ -67,35 +67,35 @@ block content
                                     span(class="position") Giảng viên: #{course.courseTeacher}
                                     p
                                     span(class="position")
-                                        a(href="#" class="btn btn-info") Đăng ký ngay
+                                        button(type="button" class="btn btn-info courseEnroll" data-courseId=course.courseId) Đăng ký ngay
                 
-    // Footer
+    //- Footer
     #footer.centroid
-        .container-w
+        .container-fluid.pt-2
             .row
-                // Map Picture
-                img.flex.map(src='/img/map.png', width='400', heigh='400')
-                
-                // Info Footer
-                .infoFooter
-                    h Nhóm phát triển phần mềm KKL Edu
-                    br
-                    h 19 Nguyễn Hữu Thọ, Tân Phong, Q7, TPHCM
-                    br
-                    h Hotline: (+84) 0987654321
-                    br
-                    h Email: kklsupport@gmail.com
-                    br
-                    h Copyright © 2020 by KKL Edu
-                    br
+                .col-md-4.d-flex.justify-content-center.mb-4
+                    //- Map Picture
+                    img(src='/img/map.png', width='300', heigh='300')
+                .col-md-8
+                    //- Info Footer
+                    div
+                        p Nhóm phát triển phần mềm KKL Edu
+                        p 19 Nguyễn Hữu Thọ, Tân Phong, Q7, TPHCM
+                        p Hotline: (+84) 0987654321
+                        p Email: kklsupport@gmail.com
+                        p Copyright © 2020 by KKL Edu
 
-                    // Some Other Media
-                    img.twitterLogo(src='/img/twitterLogo.png', width='100')
-                    img(src='/img/facebookLogo.png', width='60')
-                    img(src='/img/instagramLogo.png', width='55')
-            
-            // Product Footer
-            .productFooter
-                p
-                    img(src='https://kichi.ggg.com.vn/wp-content/uploads/2018/10/bct.png')
-                p Producted by KKL Software Team.
+                        //- Some Other Media
+                        span(style="font-size: 2.5rem" class="mr-3")
+                            i(class="fab fa-facebook")
+                        span(style="font-size: 2.5rem" class="mr-3")
+                            i(class="fab fa-twitter-square")
+                        span(style="font-size: 2.5rem")
+                            i(class="fab fa-instagram-square")
+            .row
+                .col-md-12
+                    //- Product Footer
+                    div(class="d-flex justify-content-end flex-column align-items-end")
+                        p
+                            img(src='https://kichi.ggg.com.vn/wp-content/uploads/2018/10/bct.png')
+                        p Producted by KKL Software Team.
