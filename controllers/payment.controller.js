@@ -6,12 +6,20 @@ module.exports.addPayment = async (req, res) => {
     let { studentId, tuitionFee } = req.params;
     let invoice = await Invoice.findOne({ studentId: studentId });
 
-    if (invoice && invoice.status === "Debt") {
+    if (
+        invoice &&
+        invoice.status === "Debt" &&
+        invoice.tuitionFee === tuitionFee
+    ) {
         res.json({
             code: 1,
             message: "Đã có khoản thanh toán. ",
         });
-    } else if (invoice && invoice.tuitionFee !== tuitionFee) {
+    } else if (
+        invoice &&
+        invoice.status === "Debt" &&
+        invoice.tuitionFee !== tuitionFee
+    ) {
         let updatePayment = await Invoice.findOneAndUpdate(
             { studentId: studentId },
             {
