@@ -9,7 +9,7 @@ module.exports.addPayment = async (req, res) => {
     if (
         invoice &&
         invoice.status === "Debt" &&
-        invoice.tuitionFee === tuitionFee
+        invoice.tuitionFee === parseInt(tuitionFee)
     ) {
         res.json({
             code: 1,
@@ -18,12 +18,12 @@ module.exports.addPayment = async (req, res) => {
     } else if (
         invoice &&
         invoice.status === "Debt" &&
-        invoice.tuitionFee !== tuitionFee
+        invoice.tuitionFee !== parseInt(tuitionFee)
     ) {
         let updatePayment = await Invoice.findOneAndUpdate(
             { studentId: studentId },
             {
-                tuitionFee,
+                tuitionFee: parseInt(tuitionFee),
             },
             { new: true }
         );
