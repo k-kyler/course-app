@@ -28,4 +28,12 @@ module.exports.studentCourse = async (req, res) => {
 module.exports.studentSchedule = async (req, res) => {};
 
 // Tuition fee
-module.exports.studentTuitionFee = async (req, res) => {};
+module.exports.studentTuitionFee = async (req, res) => {
+    let user = await User.findById(req.signedCookies.userId);
+    let courses = await Course.find();
+
+    res.render("dashboards/student/schedule", {
+        user,
+        courses,
+    });
+};

@@ -20,14 +20,14 @@ block content
                         li(class="nav-item")
                             a(class="nav-link" href="/dashboard/student") Thông báo
                         div(class="dropdown-divider")
-                        li(class="nav-item active")
-                            a(class="nav-link" href="#") Đăng ký khóa học
+                        li(class="nav-item")
+                            a(class="nav-link" href="/dashboard/student/course") Đăng ký khóa học
                         div(class="dropdown-divider")
                         li(class="nav-item")
                             a(class="nav-link" href="/dashboard/student/schedule") Lịch học và thi
                         div(class="dropdown-divider")
-                        li(class="nav-item")
-                            a(class="nav-link" href="/dashboard/student/tuitionfee") Đóng học phí
+                        li(class="nav-item active")
+                            a(class="nav-link" href="#") Đóng học phí
                         div(class="dropdown-divider")
                         li(class="nav-item")
                             a(class="nav-link" href="/dashboard/student/paymenthistory") Lịch sử thanh toán
@@ -41,35 +41,41 @@ block content
 
             //- DataGridView
             div(class="col-sm-9 col-md-9 col-lg-9 col-xl-9")
-                h4
-                    img(src="/img/courseList_icon.png" width="40" height="40" alt="folder icon")
-                    span &nbsp;&nbsp;Đăng ký khóa học
+                div(class="d-flex justify-content-between align-items-center")
+                    h4
+                        img(src="/img/courseList_icon.png" width="40" height="40" alt="folder icon")
+                        span &nbsp;&nbsp;Đóng học phí
+                    p(class="font-weight-bold mb-0") Mã thanh toán: 
+                        span(class="text-success")= user.studentId
+
                 //- Course List
                 table(id="MyTable" class="table table-hover")
                     thead
                         tr
                             th Tên khóa học
                             th Học phí
-                            th Ngày bắt đầu
-                            th Giảng viên
-                            th
 
                     tbody(id="coursesList")
+                        - let totalFee = 0
+
                         if courses
                             each course in courses
-                                tr(id=course.courseId)
-                                    td= course.courseName
-                                    td= Intl.NumberFormat().format(course.courseFee)
-                                    td= course.courseStart
-                                    td= course.courseTeacher
-                                    td(class="d-flex")
-                                        if user.coursesEnrolled
-                                            each courseEnrolled in user.coursesEnrolled
-                                                if courseEnrolled.courseId === course.courseId
-                                                    button(type="button" class="btn btn-outline-danger courseCancel" data-courseId=course.courseId) Hủy
+                                if user.coursesEnrolled
+                                    each courseEnrolled in user.coursesEnrolled
+                                        if courseEnrolled.courseId === course.courseId
+                                            tr(id=course.courseId)
+                                                td= course.courseName
+                                                td= Intl.NumberFormat().format(course.courseFee)
+                                            
+                                            - totalFee += course.courseFee
 
-                                        button(type="button" class="btn btn-outline-success courseEnroll" data-courseId=course.courseId) Đăng ký
+                //- Total fee
+                div(class="mt-4 d-flex justify-content-between align-items-center")
+                    a(href="#" role="button" class="btn btn-dark") Thanh toán
 
+                    p(class="mb-0 font-weight-bold") Tổng học phí phải đóng: 
+                        span(class="text-danger")= Intl.NumberFormat().format(totalFee)
+    
     br
     br
     br
