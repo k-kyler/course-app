@@ -11,8 +11,8 @@ block content
     br
 
     //- Login Form
-    <div class="container centroid">
-      <div class="login-form" style="max-width: 400px">
+    div(class="container centroid")
+      div(class="login-form" style="max-width: 400px")
         //- Button Back Home
         a(
           href="/"
@@ -74,7 +74,7 @@ block content
                 class="btn btn-primary width100Percent"
             ) Đăng nhập
 
-    if (success && success.length > 0)
+    if success
         div(class="mb-0 alert alert-success alert-dismissible fade show" style="position: absolute; bottom: 1.5rem; right: 1.5rem" role="alert")
             strong #{success}
             button(type="button" class="close" data-dismiss="alert" aria-label="Close")

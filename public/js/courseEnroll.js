@@ -60,10 +60,22 @@ $(document).ready(() => {
     $("body").on("click", ".courseCancel", (event) => {
         let courseId = event.target.dataset.courseid;
 
-        $(`tr#${courseId} button`).attr(
-            "class",
-            "btn btn-outline-success courseEnroll"
-        );
-        $(`tr#${courseId} button`).html("Đăng ký");
+        fetch(`/courseenroll/cancel/${courseId}`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "PUT",
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                if (result.code === 1) {
+                    $(`tr#${courseId} button`).attr(
+                        "class",
+                        "btn btn-outline-success courseEnroll"
+                    );
+                    $(`tr#${courseId} button`).html("Đăng ký");
+                }
+            })
+            .catch((error) => console.log(error));
     });
 });

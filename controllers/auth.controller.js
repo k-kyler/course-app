@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const Role = require("../models/role.model");
 const md5 = require("md5");
+const { v4: v4UniqueId } = require("uuid");
 const { validationResult } = require("express-validator");
 
 module.exports.register = (req, res) => {
@@ -63,6 +64,7 @@ module.exports.postRegister = async (req, res) => {
         // Add new user to db
         let newUser = new User();
 
+        newUser.studentId = v4UniqueId();
         newUser.fullname = fullname;
         newUser.phone = phone;
         newUser.address = address;
@@ -98,7 +100,7 @@ module.exports.postRegister = async (req, res) => {
 };
 
 module.exports.login = (req, res) => {
-    let registerSuccessful = req.flash("registerSuccessful");
+    let registerSuccessful = req.flash("registerSuccessful")[0];
     let error = req.flash("errorLogIn")[0];
 
     if (error) {
@@ -106,12 +108,12 @@ module.exports.login = (req, res) => {
             error: error.error,
             logInData: error.logInData,
         });
-    } else if (!error) {
-        res.render("auth/login");
     } else if (registerSuccessful) {
         res.render("auth/login", {
             success: registerSuccessful,
         });
+    } else {
+        res.render("auth/login");
     }
 };
 
