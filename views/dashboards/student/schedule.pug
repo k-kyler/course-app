@@ -41,12 +41,9 @@ block content
 
             //- DataGridView
             div(class="col-sm-9 col-md-9 col-lg-9 col-xl-9")
-                div(class="d-flex justify-content-between align-items-center")
-                    h4
-                        img(src="/img/courseList_icon.png" width="40" height="40" alt="folder icon")
-                        span &nbsp;&nbsp;Đóng học phí
-                    p(class="font-weight-bold mb-0") Mã thanh toán: 
-                        span(class="text-success")= user.studentId
+                h4
+                    img(src="/img/courseList_icon.png" width="40" height="40" alt="folder icon")
+                    span &nbsp;&nbsp;Đóng học phí
 
                 //- Course List
                 table(id="MyTable" class="table table-hover")
@@ -71,11 +68,16 @@ block content
 
                 //- Total fee
                 div(class="mt-4 d-flex justify-content-between align-items-center")
-                    a(href="#" role="button" class="btn btn-dark") Thanh toán
+                    div(class="d-flex flex-column")
+                        p(class="font-weight-bold mb-2") Mã thanh toán: 
+                            span(class="text-success")= user.studentId
+                        p(class="mb-0 font-weight-bold") Tổng học phí phải đóng: 
+                            span(class="text-danger")= Intl.NumberFormat().format(totalFee)
 
-                    p(class="mb-0 font-weight-bold") Tổng học phí phải đóng: 
-                        span(class="text-danger")= Intl.NumberFormat().format(totalFee)
-    
+                    button(type="button" class="btn btn-dark paymentProcess" data-studentId=user.studentId) Thanh toán
+
+                    input(type="hidden" value=totalFee id="tuitionFee")
+
     br
     br
     br
