@@ -40,7 +40,7 @@ block content
             div(class="col-sm-9 col-md-9 col-lg-9 col-xl-9")
                 h4
                     img(src="/img/courseList_icon.png" width="40" height="40" alt="folder icon")
-                    span &nbsp;&nbsp;Khóa học đã đăng ký
+                    span &nbsp;&nbsp;Khóa học
                 //- Course List
                 table(id="MyTable" class="table table-hover")
                     thead
@@ -52,7 +52,21 @@ block content
                             th
 
                     tbody(id="coursesList")
-                        
+                        if courses
+                            each course in courses
+                                tr(id=course.courseId)
+                                    td= course.courseName
+                                    td= Intl.NumberFormat().format(course.courseFee)
+                                    td= course.courseStart
+                                    td= course.courseTeacher
+                                    td(class="d-flex")
+                                        if user.coursesEnrolled
+                                            each courseEnrolled in user.coursesEnrolled
+                                                if courseEnrolled.courseId === course.courseId
+                                                    button(type="button" class="btn btn-outline-danger courseCancel" data-courseId=course.courseId) Hủy
+
+                                        button(type="button" class="btn btn-outline-success courseEnroll" data-courseId=course.courseId) Đăng ký
+
     br
     br
     br

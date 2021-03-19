@@ -25,6 +25,7 @@ const notificationRoute = require("./routes/notification.route");
 const courseRoute = require("./routes/course.route");
 const teacherRoute = require("./routes/teacher.route");
 const studentRoute = require("./routes/student.route");
+const courseEnrollRoute = require("./routes/courseEnroll.route");
 
 // Require custom middlewares
 const authMiddleware = require("./middlewares/auth.middleware");
@@ -87,6 +88,9 @@ app.use(
     authMiddleware.requireAuth,
     studentDashboardRoute
 );
+
+// Course enroll routes
+app.use("/courseenroll", authMiddleware.requireAuth, courseEnrollRoute);
 
 // Server listen
 app.listen(port, () => {

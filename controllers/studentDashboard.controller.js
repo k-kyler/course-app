@@ -17,11 +17,9 @@ module.exports.studentNotification = async (req, res) => {
 module.exports.studentCourse = async (req, res) => {
     let user = await User.findById(req.signedCookies.userId);
     let courses = await Course.find();
-    let users = await User.find();
 
     res.render("dashboards/student/course", {
         user,
-        users,
         courses,
     });
 };

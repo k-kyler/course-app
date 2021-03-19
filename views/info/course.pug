@@ -51,11 +51,11 @@ block content
             
             div(class="container centroid")
                 div(class="width100Percent")
-                    div(class="colorSeeDetail width100Percent centroid banner") Danh sách các Khóa học
+                    div(class="colorSeeDetail width100Percent centroid banner") Danh sách các khóa học
 
     div(class="container centroid")
-        //- Show courses List
         div(class="container")
+            //- Show courses List
             div(class="row")
                 if courses
                     each course in courses 
@@ -67,7 +67,7 @@ block content
                                     span(class="position") Giảng viên: #{course.courseTeacher}
                                     p
                                     span(class="position")
-                                        button(type="button" class="btn btn-info courseEnroll" data-courseId=course.courseId) Đăng ký ngay
+                                        a(href="/dashboard/student/course" role="button" class="btn btn-info") Đăng ký ngay
                 
     //- Footer
     #footer.centroid
