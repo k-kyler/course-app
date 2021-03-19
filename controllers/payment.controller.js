@@ -3,18 +3,17 @@ const Invoice = require("../models/invoice.model");
 
 module.exports.addPayment = async (req, res) => {
     let user = await User.findById(req.signedCookies.userId);
-    let { tuitionFee } = req.body;
-    let { id } = req.params;
-    let invoice = await Invoice.findOne({ studentId: id });
+    let { studentId, tuitionFee } = req.params;
+    let invoice = await Invoice.findOne({ studentId: studentId });
 
     if (invoice && invoice.status === "Debt") {
         res.json({
             code: 1,
-            message: "",
+            message: "Đã có khoản thanh toán. ",
         });
     } else if (invoice && invoice.tuitionFee !== tuitionFee) {
         let updatePayment = await Invoice.findOneAndUpdate(
-            { studentId: id },
+            { studentId: studentId },
             {
                 tuitionFee,
             },
@@ -23,7 +22,7 @@ module.exports.addPayment = async (req, res) => {
 
         res.json({
             code: 1,
-            message: "Đã cập nhật khoản thanh toán",
+            message: "Đã cập nhật khoản thanh toán. ",
         });
     } else if (!invoice) {
         let i = new Invoice();

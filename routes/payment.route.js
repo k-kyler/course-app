@@ -3,6 +3,6 @@ const controller = require("../controllers/payment.controller");
 
 let router = express.Router();
 
-router.post("/:id", controller.addPayment);
+router.post("/:studentId/:tuitionFee", controller.addPayment);
 
 module.exports = router;

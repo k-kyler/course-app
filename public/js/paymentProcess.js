@@ -2,16 +2,14 @@ $(document).ready(() => {
     // Show payment process modal
     $("body").on("click", ".paymentProcess", (event) => {
         let studentId = event.target.dataset.studentid;
+        let tuitionFee = $("#tuitionFee").val();
 
         event.preventDefault();
-        fetch(`/payment/${studentId}`, {
+        fetch(`/payment/${studentId}/${tuitionFee}`, {
             headers: {
                 "Content-Type": "application/json",
             },
             method: "POST",
-            body: JSON.stringify({
-                tuitionFee: $("#tuitionFee").val(),
-            }),
         })
             .then((response) => response.json())
             .then((result) => {
