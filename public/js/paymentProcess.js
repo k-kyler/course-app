@@ -24,7 +24,7 @@ $(document).ready(() => {
                         );
                         $("#paymentProcessContent").html(
                             result.message +
-                                "<a href='#'>Đến trang thanh toán</a>"
+                                "<a href='http://localhost:5000'>Đến trang thanh toán</a>"
                         );
                     }, 800);
                 } else if (result.code === 0) {

@@ -5,12 +5,10 @@ let invoiceSchema = new mongoose.Schema({
     studentName: String,
     tuitionFee: Number,
     status: String,
-    payHistory: [
-        {
-            payer: String,
-            date: String,
-        },
-    ],
+    payHistory: {
+        payer: String,
+        date: String,
+    },
     courses: [
         {
             courseId: String,

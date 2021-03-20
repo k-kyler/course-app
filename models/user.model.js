@@ -16,6 +16,7 @@ let userSchema = new mongoose.Schema({
     ],
     role: Number,
     availableBalances: Number,
+    transactionHistory: [],
 });
 
 let User = mongoose.model("User", userSchema, "users");
