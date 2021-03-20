@@ -20,16 +20,18 @@ module.exports.addPayment = async (req, res) => {
 
     invoice = invoice[0];
 
-    for (let i in invoice.courses.map((course) => {
-        return {
-            courseId: course.courseId,
-        };
-    })) {
-        for (let j in convertCoursesArray) {
-            if (i.courseId === j.courseId) {
-                checkExistedDebt = true;
-            } else {
-                checkExistedDebt = false;
+    if (invoice) {
+        for (let i in invoice.courses.map((course) => {
+            return {
+                courseId: course.courseId,
+            };
+        })) {
+            for (let j in convertCoursesArray) {
+                if (i.courseId === j.courseId) {
+                    checkExistedDebt = true;
+                } else {
+                    checkExistedDebt = false;
+                }
             }
         }
     }
@@ -49,7 +51,7 @@ module.exports.addPayment = async (req, res) => {
         parseInt(tuitionFee) !== 0
     ) {
         let updatePayment = await Invoice.findOneAndUpdate(
-            { studentId: studentId },
+            { studentId: studentId, status: "Debt" },
             {
                 tuitionFee: parseInt(tuitionFee),
                 courses: convertCoursesArray,
