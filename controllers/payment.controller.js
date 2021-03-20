@@ -5,6 +5,12 @@ module.exports.addPayment = async (req, res) => {
     let user = await User.findById(req.signedCookies.userId);
     let { studentId, tuitionFee } = req.params;
     let invoice = await Invoice.findOne({ studentId: studentId });
+    let { coursesArray } = req.body;
+    let convertCoursesArray = JSON.parse(coursesArray).map((course) => {
+        return {
+            courseId: course,
+        };
+    });
 
     if (
         invoice &&
@@ -24,6 +30,7 @@ module.exports.addPayment = async (req, res) => {
             { studentId: studentId },
             {
                 tuitionFee: parseInt(tuitionFee),
+                courses: convertCoursesArray,
             },
             { new: true }
         );
@@ -40,6 +47,7 @@ module.exports.addPayment = async (req, res) => {
         i.status = "Debt";
         i.payHistory = [];
         i.tuitionFee = tuitionFee;
+        i.courses = convertCoursesArray;
         i.save();
 
         res.json({

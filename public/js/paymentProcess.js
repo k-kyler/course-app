@@ -2,6 +2,7 @@ $(document).ready(() => {
     // Show payment process modal
     $("body").on("click", ".paymentProcess", (event) => {
         let studentId = event.target.dataset.studentid;
+        let coursesArray = event.target.dataset.coursesarray;
         let tuitionFee = $("#tuitionFee").val();
 
         event.preventDefault();
@@ -10,6 +11,9 @@ $(document).ready(() => {
                 "Content-Type": "application/json",
             },
             method: "POST",
+            body: JSON.stringify({
+                coursesArray,
+            }),
         })
             .then((response) => response.json())
             .then((result) => {

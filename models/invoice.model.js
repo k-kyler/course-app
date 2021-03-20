@@ -11,6 +11,11 @@ let invoiceSchema = new mongoose.Schema({
             date: String,
         },
     ],
+    courses: [
+        {
+            courseId: String,
+        },
+    ],
 });
 
 let Invoice = mongoose.model("Invoice", invoiceSchema, "invoices");

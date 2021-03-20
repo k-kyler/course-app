@@ -54,6 +54,7 @@ block content
 
                     tbody(id="coursesList")
                         - let totalFee = 0
+                        - let coursesArray = []
 
                         if courses
                             each course in courses
@@ -64,6 +65,7 @@ block content
                                                 td= course.courseName
                                                 td= Intl.NumberFormat().format(course.courseFee)
                                             
+                                            - coursesArray.push(course.courseId)
                                             - totalFee += course.courseFee
 
                 //- Total fee
@@ -71,7 +73,7 @@ block content
                     p(class="mb-0 font-weight-bold") Tổng học phí phải đóng: 
                         span(class="text-danger")= Intl.NumberFormat().format(totalFee)
 
-                    button(type="button" class="btn btn-dark paymentProcess" data-studentId=user.studentId) Thanh toán
+                    button(type="button" class="btn btn-dark paymentProcess" data-studentId=user.studentId data-coursesArray=coursesArray) Thanh toán
 
                     input(type="hidden" value=totalFee id="tuitionFee")
 
