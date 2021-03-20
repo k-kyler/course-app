@@ -15,6 +15,7 @@ $(document).ready(() => {
             .then((result) => {
                 if (result.code === 1) {
                     setTimeout(() => {
+                        $("#paymentProcessStudentId").html(studentId);
                         $("#paymentProcessContent").html(
                             result.message +
                                 "<a href='#'>Đến trang thanh toán</a>"

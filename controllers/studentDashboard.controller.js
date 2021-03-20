@@ -32,7 +32,7 @@ module.exports.studentTuitionFee = async (req, res) => {
     let user = await User.findById(req.signedCookies.userId);
     let courses = await Course.find();
 
-    res.render("dashboards/student/schedule", {
+    res.render("dashboards/student/tuitionFee", {
         user,
         courses,
     });
