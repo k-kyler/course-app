@@ -2,19 +2,41 @@ const User = require("../models/user.model");
 const Invoice = require("../models/invoice.model");
 
 module.exports.addPayment = async (req, res) => {
-    let user = await User.findById(req.signedCookies.userId);
     let { studentId, tuitionFee } = req.params;
-    let invoice = await Invoice.findOne({ studentId: studentId });
     let { coursesArray } = req.body;
+    let user = await User.findById(req.signedCookies.userId);
+    let invoices = await Invoice.find({ studentId: studentId });
     let convertCoursesArray = JSON.parse(coursesArray).map((course) => {
         return {
             courseId: course,
         };
     });
+    let invoice = invoices.filter((invoice) => {
+        if (invoice.status === "Debt") {
+            return invoice;
+        }
+    });
+    let checkExistedDebt = false;
+
+    invoice = invoice[0];
+
+    for (let i in invoice.courses.map((course) => {
+        return {
+            courseId: course.courseId,
+        };
+    })) {
+        for (let j in convertCoursesArray) {
+            if (i.courseId === j.courseId) {
+                checkExistedDebt = true;
+            } else {
+                checkExistedDebt = false;
+            }
+        }
+    }
 
     if (
         invoice &&
-        invoice.status === "Debt" &&
+        checkExistedDebt === true &&
         invoice.tuitionFee === parseInt(tuitionFee)
     ) {
         res.json({
@@ -23,8 +45,8 @@ module.exports.addPayment = async (req, res) => {
         });
     } else if (
         invoice &&
-        invoice.status === "Debt" &&
-        invoice.tuitionFee !== parseInt(tuitionFee)
+        invoice.tuitionFee !== parseInt(tuitionFee) &&
+        parseInt(tuitionFee) !== 0
     ) {
         let updatePayment = await Invoice.findOneAndUpdate(
             { studentId: studentId },
@@ -39,7 +61,7 @@ module.exports.addPayment = async (req, res) => {
             code: 1,
             message: "Đã cập nhật khoản thanh toán. ",
         });
-    } else if (!invoice) {
+    } else if (!invoice && parseInt(tuitionFee) !== 0) {
         let i = new Invoice();
 
         i.studentId = user.studentId;
@@ -53,6 +75,21 @@ module.exports.addPayment = async (req, res) => {
         res.json({
             code: 1,
             message: "Thêm khoản thanh toán thành công. ",
+        });
+    } else if (!invoice && parseInt(tuitionFee) === 0) {
+        res.json({
+            code: 0,
+            message: "Không có môn học đăng ký.",
+        });
+    } else if (invoice && parseInt(tuitionFee) === 0) {
+        let removeInvoice = await Invoice.findOneAndRemove({
+            studentId: studentId,
+            status: "Debt",
+        });
+
+        res.json({
+            code: 0,
+            message: "Không có môn học đăng ký.",
         });
     }
 };

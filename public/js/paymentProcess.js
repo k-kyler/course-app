@@ -19,12 +19,16 @@ $(document).ready(() => {
             .then((result) => {
                 if (result.code === 1) {
                     setTimeout(() => {
-                        $("#paymentProcessStudentId").html(studentId);
+                        $("#paymentProcessStudentId").html(
+                            `<p class="font-weight-bold mb-2">Mã thanh toán: <span class="text-success">${studentId}</span></p>`
+                        );
                         $("#paymentProcessContent").html(
                             result.message +
                                 "<a href='#'>Đến trang thanh toán</a>"
                         );
                     }, 800);
+                } else if (result.code === 0) {
+                    $("#paymentProcessContent").html(result.message);
                 }
             })
             .catch((error) => console.log(error));
