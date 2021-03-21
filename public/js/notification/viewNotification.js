@@ -16,7 +16,7 @@ $(document).ready(() => {
                         result.data.notificationName
                     );
                     $("#viewNotificationContent").html(
-                        "Nội dung: " + result.data.notificationContent
+                        "Nội dung:<br>" + result.data.notificationContent
                     );
                 }
             })
