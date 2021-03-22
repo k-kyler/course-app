@@ -1,0 +1,10 @@
+//- Log out modal
+#logoutModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title Bạn có chắc chắn muốn đăng xuất?
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body.d-flex.justify-content-end
+                button(class="btn btn-danger", id="modalLogoutButton") Đăng xuất
+                button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
