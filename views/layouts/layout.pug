@@ -42,6 +42,9 @@ html(lang="en")
         //- Payment process modal
         include ../modals/paymentProcess
 
+        //- Payment history courses modal
+        include ../modals/paymentHistoryCourses
+
         //- Log out modal
         include ../modals/logout
         
@@ -53,44 +56,47 @@ html(lang="en")
         script(src="/js/logout.js")
 
         //- ----- Admin dashboard -----
-        //- Notification client
-        script(src="/js/notification/viewNotification.js") 
-        script(src="/js/notification/addNotification.js") 
-        script(src="/js/notification/editNotification.js") 
-        script(src="/js/notification/deleteNotification.js") 
+        //- Notification management
+        script(src="/js/admin/notification/viewNotification.js") 
+        script(src="/js/admin/notification/addNotification.js") 
+        script(src="/js/admin/notification/editNotification.js") 
+        script(src="/js/admin/notification/deleteNotification.js") 
 
-        //- Course client
-        script(src="/js/course/viewCourse.js") 
-        script(src="/js/course/addCourse.js") 
-        script(src="/js/course/editCourse.js") 
-        script(src="/js/course/deleteCourse.js") 
+        //- Course management
+        script(src="/js/admin/course/viewCourse.js") 
+        script(src="/js/admin/course/addCourse.js") 
+        script(src="/js/admin/course/editCourse.js") 
+        script(src="/js/admin/course/deleteCourse.js") 
 
-        //- Learning schedule client
-        //- script(src="/js/schedule/viewLearningSchedule.js") 
-        //- script(src="/js/schedule/addLearningSchedule.js") 
-        //- script(src="/js/schedule/editLearningSchedule.js") 
-        //- script(src="/js/schedule/deleteLearningSchedule.js") 
+        //- Learning schedule management
+        //- script(src="/js/admin/schedule/viewLearningSchedule.js") 
+        //- script(src="/js/admin/schedule/addLearningSchedule.js") 
+        //- script(src="/js/admin/schedule/editLearningSchedule.js") 
+        //- script(src="/js/admin/schedule/deleteLearningSchedule.js") 
 
-        //- Exam schedule client
-        //- script(src="/js/schedule/viewExamSchedule.js") 
-        //- script(src="/js/schedule/addExamSchedule.js") 
-        //- script(src="/js/schedule/editExamSchedule.js") 
-        //- script(src="/js/schedule/deleteExamSchedule.js") 
+        //- Exam schedule management
+        //- script(src="/js/admin/schedule/viewExamSchedule.js") 
+        //- script(src="/js/admin/schedule/addExamSchedule.js") 
+        //- script(src="/js/admin/schedule/editExamSchedule.js") 
+        //- script(src="/js/admin/schedule/deleteExamSchedule.js") 
 
-        //- Student client
-        script(src="/js/student/addStudent.js") 
-        script(src="/js/student/editStudent.js") 
-        script(src="/js/student/deleteStudent.js") 
+        //- Student management
+        script(src="/js/admin/student/addStudent.js") 
+        script(src="/js/admin/student/editStudent.js") 
+        script(src="/js/admin/student/deleteStudent.js") 
 
-        //- Teacher client
-        script(src="/js/teacher/viewTeacher.js") 
-        script(src="/js/teacher/addTeacher.js") 
-        script(src="/js/teacher/editTeacher.js") 
-        script(src="/js/teacher/deleteTeacher.js")
+        //- Teacher management
+        script(src="/js/admin/teacher/viewTeacher.js") 
+        script(src="/js/admin/teacher/addTeacher.js") 
+        script(src="/js/admin/teacher/editTeacher.js") 
+        script(src="/js/admin/teacher/deleteTeacher.js")
 
         //- ----- Student dashboard -----
         //- Course enroll
-        script(src="/js/courseEnroll.js") 
+        script(src="/js/student/courseEnroll.js") 
 
         //- Payment process
-        script(src="/js/paymentProcess.js") 
+        script(src="/js/student/paymentProcess.js") 
+
+        //- Payment history courses
+        script(src="/js/student/paymentHistoryCourses.js") 

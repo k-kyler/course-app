@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const Notification = require("../models/notification.model");
 const Course = require("../models/course.model");
+const Invoice = require("../models/invoice.model");
 
 // Notification
 module.exports.studentNotification = async (req, res) => {
@@ -35,5 +36,19 @@ module.exports.studentTuitionFee = async (req, res) => {
     res.render("dashboards/student/tuitionFee", {
         user,
         courses,
+    });
+};
+
+// Payment history
+module.exports.studentPaymentHistory = async (req, res) => {
+    let user = await User.findById(req.signedCookies.userId);
+    let invoices = await Invoice.find({
+        studentId: user.studentId,
+        status: "Đã hoàn tất",
+    });
+
+    res.render("dashboards/student/paymentHistory", {
+        user,
+        invoices,
     });
 };

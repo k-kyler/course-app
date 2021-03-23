@@ -7,5 +7,6 @@ router.get("/", controller.studentNotification);
 router.get("/course", controller.studentCourse);
 router.get("/schedule", controller.studentSchedule);
 router.get("/tuitionfee", controller.studentTuitionFee);
+router.get("/paymenthistory", controller.studentPaymentHistory);
 
 module.exports = router;

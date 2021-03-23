@@ -12,7 +12,7 @@ module.exports.addPayment = async (req, res) => {
         };
     });
     let invoice = invoices.filter((invoice) => {
-        if (invoice.status === "Debt") {
+        if (invoice.status === "Nợ học phí") {
             return invoice;
         }
     });
@@ -51,7 +51,7 @@ module.exports.addPayment = async (req, res) => {
         parseInt(tuitionFee) !== 0
     ) {
         let updatePayment = await Invoice.findOneAndUpdate(
-            { studentId: studentId, status: "Debt" },
+            { studentId: studentId, status: "Nợ học phí" },
             {
                 tuitionFee: parseInt(tuitionFee),
                 courses: convertCoursesArray,
@@ -68,7 +68,7 @@ module.exports.addPayment = async (req, res) => {
 
         i.studentId = user.studentId;
         i.studentName = user.fullname;
-        i.status = "Debt";
+        i.status = "Nợ học phí";
         i.payHistory = [];
         i.tuitionFee = tuitionFee;
         i.courses = convertCoursesArray;
@@ -86,7 +86,7 @@ module.exports.addPayment = async (req, res) => {
     } else if (invoice && parseInt(tuitionFee) === 0) {
         let removeInvoice = await Invoice.findOneAndRemove({
             studentId: studentId,
-            status: "Debt",
+            status: "Nợ học phí",
         });
 
         res.json({

@@ -1,0 +1,19 @@
+//- Payment history courses modal
+#paymentHistoryCoursesModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title Các môn học đã đăng ký
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                    //- Loading message
+                    div(id="paymentHistoryCoursesLoading")
+
+                    //- Courses list
+                    ul(id="paymentHistoryCoursesList")
+
+                    //- Error message
+                    p(class="text-danger" id="errorPaymentHistoryCourses")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng

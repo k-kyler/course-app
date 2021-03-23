@@ -27,6 +27,7 @@ const teacherRoute = require("./routes/teacher.route");
 const studentRoute = require("./routes/student.route");
 const courseEnrollRoute = require("./routes/courseEnroll.route");
 const paymentRoute = require("./routes/payment.route");
+const paymentHistoryCoursesRoute = require("./routes/paymentHistoryCourses.route");
 
 // Require custom middlewares
 const authMiddleware = require("./middlewares/auth.middleware");
@@ -95,6 +96,13 @@ app.use("/courseenroll", authMiddleware.requireAuth, courseEnrollRoute);
 
 // Payment routes
 app.use("/payment", authMiddleware.requireAuth, paymentRoute);
+
+// Payment history courses routes
+app.use(
+    "/paymenthistorycourses",
+    authMiddleware.requireAuth,
+    paymentHistoryCoursesRoute
+);
 
 // Server listen
 app.listen(port, () => {

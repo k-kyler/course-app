@@ -1,0 +1,100 @@
+extends ../../layouts/layout
+
+block content
+    //- DataView
+    div(class="container-fluid")
+        div(class="row")
+            //- Menu
+            div(class="col-sm-3 col-md-3 col-lg-3 col-xl-3")
+                nav(class="navbar navbar-light" style="padding-top: 0px;")
+                    ul(class="navbar-nav nav nav-pills" )
+                        div(style="border-style: ridge; border-radius: 10px;")
+                            br
+                            img(src="/img/ava3.png" style="border-radius: 50%; height: 50%; width: 50%; display: block; margin-left: auto; margin-right: auto;")
+                            li(class="nav-item")
+
+                            if user
+                                p(class="nav-link" style="text-align: center;") #{user.fullname}
+                                
+                        br
+                        li(class="nav-item")
+                            a(class="nav-link" href="/dashboard/student") Thông báo
+                        div(class="dropdown-divider")
+                        li(class="nav-item")
+                            a(class="nav-link" href="#") Đăng ký khóa học
+                        div(class="dropdown-divider")
+                        li(class="nav-item")
+                            a(class="nav-link" href="/dashboard/student/schedule") Lịch học và thi
+                        div(class="dropdown-divider")
+                        li(class="nav-item")
+                            a(class="nav-link" href="/dashboard/student/tuitionfee") Thanh toán học phí
+                        div(class="dropdown-divider")
+                        li(class="nav-item active")
+                            a(class="nav-link" href="/dashboard/student/paymenthistory") Lịch sử thanh toán
+                        div(class="dropdown-divider")
+                        li(class="nav-item")
+                            a(class="nav-link" href="/") Về trang chủ
+                        div(class="dropdown-divider")
+                        li(class="nav-item")
+                            a(class="nav-link" href="#" id="logoutButton") Đăng xuất
+                        div(class="dropdown-divider")
+
+            //- DataGridView
+            div(class="col-sm-9 col-md-9 col-lg-9 col-xl-9")
+                h4
+                    i(class="fas fa-file-invoice-dollar")
+                    span &nbsp;&nbsp;Lịch sử thanh toán
+                //- Course List
+                table(id="MyTable" class="table table-hover")
+                    thead
+                        tr
+                            th Người thanh toán
+                            th Ngày thanh toán
+                            th Tổng học phí đã đóng
+                            th Môn học
+
+                    tbody(id="coursesList")
+                        if invoices
+                            each invoice in invoices
+                                tr(id=invoice._id)
+                                    td= invoice.payHistory.payer
+                                    td= invoice.payHistory.date.split("GMT+0700 (Indochina Time)")[0]
+                                    td= Intl.NumberFormat().format(invoice.tuitionFee)
+                                    td
+                                        button(type="button" class="btn btn-outline-dark viewPaymentHistoryCourses" data-invoiceId=invoice._id) Xem
+
+    br
+    br
+    br
+    br
+    
+    //- Footer
+    #footer.centroid
+        .container-fluid.pt-2
+            .row
+                .col-md-4.d-flex.justify-content-center.mb-4
+                    //- Map Picture
+                    img(src='/img/map.png', width='300', heigh='300')
+                .col-md-8.d-flex.align-items-center
+                    //- Info Footer
+                    div
+                        p Nhóm phát triển phần mềm KKL Edu
+                        p 19 Nguyễn Hữu Thọ, Tân Phong, Q7, TPHCM
+                        p Hotline: (+84) 0987654321
+                        p Email: kklsupport@gmail.com
+                        p Copyright © 2020 by KKL Edu
+
+                        //- Some Other Media
+                        span(style="font-size: 2.5rem" class="mr-3")
+                            i(class="fab fa-facebook")
+                        span(style="font-size: 2.5rem" class="mr-3")
+                            i(class="fab fa-twitter-square")
+                        span(style="font-size: 2.5rem")
+                            i(class="fab fa-instagram-square")
+            .row
+                .col-md-12
+                    //- Product Footer
+                    div(class="d-flex justify-content-end flex-column align-items-end")
+                        p
+                            img(src='https://kichi.ggg.com.vn/wp-content/uploads/2018/10/bct.png')
+                        p Producted by KKL Software Team.
