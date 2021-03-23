@@ -13,7 +13,7 @@ $(document).ready(() => {
                         "Giảng viên " + result.data.fullname
                     );
                     $("#viewDescriptionContent").html(
-                        "Mô tả: " + result.data.description
+                        "Mô tả:<br>" + result.data.description
                     );
                 }
             })

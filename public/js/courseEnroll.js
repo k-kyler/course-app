@@ -20,7 +20,7 @@ $(document).ready(() => {
                         "Giảng viên: " + result.data.courseTeacher
                     );
                     $("#courseEnrollDescription").html(
-                        "Mô tả: " + result.data.courseDescription
+                        "Mô tả:<br>" + result.data.courseDescription
                     );
                 }
             })

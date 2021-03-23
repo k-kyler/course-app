@@ -24,7 +24,7 @@ $(document).ready(() => {
                         );
                         $("#paymentProcessContent").html(
                             result.message +
-                                "<a href='http://localhost:5000'>Đến trang thanh toán</a>"
+                                "<a href='https://school-ibanking-app.herokuapp.com/'>Đến trang thanh toán</a>"
                         );
                     }, 800);
                 } else if (result.code === 0) {

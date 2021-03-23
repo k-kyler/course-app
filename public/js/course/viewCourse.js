@@ -13,7 +13,7 @@ $(document).ready(() => {
                         "Khóa học " + result.data.courseName
                     );
                     $("#viewCourseDescriptionContent").html(
-                        "Mô tả: " + result.data.courseDescription
+                        "Mô tả:<br>" + result.data.courseDescription
                     );
                 }
             })
