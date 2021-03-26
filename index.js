@@ -21,6 +21,7 @@ const authRoute = require("./routes/auth.route");
 const infoRoute = require("./routes/info.route");
 const adminDashboardRoute = require("./routes/adminDashboard.route");
 const studentDashboardRoute = require("./routes/studentDashboard.route");
+const teacherDashboardRoute = require("./routes/teacherDashboard.route");
 const notificationRoute = require("./routes/notification.route");
 const courseRoute = require("./routes/course.route");
 const teacherRoute = require("./routes/teacher.route");
@@ -102,6 +103,13 @@ app.use(
     "/paymenthistorycourses",
     authMiddleware.requireAuth,
     paymentHistoryCoursesRoute
+);
+
+// Teacher routes
+app.use(
+    "/dashboard/teacher",
+    authMiddleware.requireAuth,
+    teacherDashboardRoute
 );
 
 // Server listen
