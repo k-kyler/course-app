@@ -25,10 +25,10 @@ html(lang="en")
         include ../modals/course
 
         //- Learning schedule modals
-        //- include ../modals/learningSchedule
+        include ../modals/learningSchedule
 
         //- Exam schedule modals
-        //- include ../modals/examSchedule
+        include ../modals/examSchedule
 
         //- Student modals
         include ../modals/student
@@ -55,48 +55,45 @@ html(lang="en")
         script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js", integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", crossorigin="anonymous")
         script(src="/js/logout.js")
 
-        //- ----- Admin dashboard -----
         //- Notification management
-        script(src="/js/admin/notification/viewNotification.js") 
-        script(src="/js/admin/notification/addNotification.js") 
-        script(src="/js/admin/notification/editNotification.js") 
-        script(src="/js/admin/notification/deleteNotification.js") 
+        script(src="/js/notification/viewNotification.js") 
+        script(src="/js/notification/addNotification.js") 
+        script(src="/js/notification/editNotification.js") 
+        script(src="/js/notification/deleteNotification.js") 
 
         //- Course management
-        script(src="/js/admin/course/viewCourse.js") 
-        script(src="/js/admin/course/addCourse.js") 
-        script(src="/js/admin/course/editCourse.js") 
-        script(src="/js/admin/course/deleteCourse.js") 
+        script(src="/js/course/viewCourse.js") 
+        script(src="/js/course/addCourse.js") 
+        script(src="/js/course/editCourse.js") 
+        script(src="/js/course/deleteCourse.js") 
 
         //- Learning schedule management
-        //- script(src="/js/admin/schedule/viewLearningSchedule.js") 
-        //- script(src="/js/admin/schedule/addLearningSchedule.js") 
-        //- script(src="/js/admin/schedule/editLearningSchedule.js") 
-        //- script(src="/js/admin/schedule/deleteLearningSchedule.js") 
+        script(src="/js/schedule/addLearningSchedule.js") 
+        script(src="/js/schedule/editLearningSchedule.js") 
+        script(src="/js/schedule/deleteLearningSchedule.js") 
 
         //- Exam schedule management
-        //- script(src="/js/admin/schedule/viewExamSchedule.js") 
-        //- script(src="/js/admin/schedule/addExamSchedule.js") 
-        //- script(src="/js/admin/schedule/editExamSchedule.js") 
-        //- script(src="/js/admin/schedule/deleteExamSchedule.js") 
+        //- script(src="/js/schedule/viewExamSchedule.js") 
+        //- script(src="/js/schedule/addExamSchedule.js") 
+        //- script(src="/js/schedule/editExamSchedule.js") 
+        //- script(src="/js/schedule/deleteExamSchedule.js") 
 
         //- Student management
-        script(src="/js/admin/student/addStudent.js") 
-        script(src="/js/admin/student/editStudent.js") 
-        script(src="/js/admin/student/deleteStudent.js") 
+        script(src="/js/student/addStudent.js") 
+        script(src="/js/student/editStudent.js") 
+        script(src="/js/student/deleteStudent.js") 
 
         //- Teacher management
-        script(src="/js/admin/teacher/viewTeacher.js") 
-        script(src="/js/admin/teacher/addTeacher.js") 
-        script(src="/js/admin/teacher/editTeacher.js") 
-        script(src="/js/admin/teacher/deleteTeacher.js")
+        script(src="/js/teacher/viewTeacher.js") 
+        script(src="/js/teacher/addTeacher.js") 
+        script(src="/js/teacher/editTeacher.js") 
+        script(src="/js/teacher/deleteTeacher.js")
 
-        //- ----- Student dashboard -----
-        //- Course enroll
-        script(src="/js/student/courseEnroll.js") 
+        //- Course enroll for student
+        script(src="/js/courseEnroll.js") 
 
-        //- Payment process
-        script(src="/js/student/paymentProcess.js") 
+        //- Payment process for student
+        script(src="/js/paymentProcess.js") 
 
-        //- Payment history courses
-        script(src="/js/student/paymentHistoryCourses.js") 
+        //- Payment history courses for student
+        script(src="/js/paymentHistoryCourses.js") 

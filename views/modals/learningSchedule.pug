@@ -1,0 +1,78 @@
+//- Add learning schedule modal
+#addLearningScheduleModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title Thêm lịch học mới
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                form
+                    div.form-group.row
+                        label(class="col-md-12 col-form-label", for="notificationName") Tên thông báo
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="notificationName")
+
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="notificationContent") Nội dung
+                        div(class="col-md-12")
+                            textarea(rows="7", type="text", class="form-control", id="notificationContent")
+                    
+                    p(class="text-success text-center" id="addNotificationSuccess")
+                    p(class="text-danger text-center" id="addNotificationFailed")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-success", id="addLearningScheduleButton") Thêm
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+
+//- Edit notification modal
+#editNotificationModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title Cập nhật thông báo
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                form
+                    div.form-group.row
+                        label(class="col-md-12 col-form-label", for="editNotificationName") Tên thông báo
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="editNotificationName")
+
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="editNotificationContent") Nội dung
+                        div(class="col-md-12")
+                            textarea(rows="7", type="text", class="form-control", id="editNotificationContent")
+                    
+                    p(class="text-success text-center" id="editNotificationSuccess")
+                    p(class="text-danger text-center" id="editNotificationFailed")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-primary", id="editNotificationButton") Cập nhật
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+
+//- Delete notification modal
+#deleteNotificationModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title#deleteNotificationTitle
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                    p(class="text-success text-center" id="deleteNotificationSuccess")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-danger", id="deleteNotificationButton") Xóa
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+
+//- View notification modal
+#viewNotificationModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title#viewNotificationTitle
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                    p(id="viewNotificationContent" style="word-wrap: break-word; text-align: justify;")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
