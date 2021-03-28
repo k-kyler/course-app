@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const Notification = require("../models/notification.model");
 const Course = require("../models/course.model");
+const LearningSchedule = require("../models/learningSchedule.model");
 
 // Notification
 module.exports.adminNotification = async (req, res) => {
@@ -29,9 +30,34 @@ module.exports.adminCourse = async (req, res) => {
 // Schedule
 module.exports.adminSchedule = async (req, res) => {
     let user = await User.findById(req.signedCookies.userId);
+    let users = await User.find();
+    let courses = await Course.find();
+    let learningSchedules = await LearningSchedule.find();
+    let convertLearningSchedules = [];
+
+    for (let learningSchedule of learningSchedules) {
+        let teacher = await User.findOne({
+            teacherId: learningSchedule.teacherId,
+        });
+        let course = await Course.findOne({
+            courseId: learningSchedule.courseId,
+        });
+
+        convertLearningSchedules.push({
+            learningScheduleId: learningSchedule.learningScheduleId,
+            room: learningSchedule.room,
+            date: learningSchedule.date,
+            time: learningSchedule.time,
+            teacherName: teacher.fullname,
+            courseName: course.courseName,
+        });
+    }
 
     res.render("dashboards/admin-staff/schedule", {
         user,
+        users,
+        courses,
+        learningSchedules: convertLearningSchedules,
     });
 };
 

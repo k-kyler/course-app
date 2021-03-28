@@ -60,6 +60,17 @@ block content
                                         th Điều khiển
 
                                 tbody(id="learningScheduleList")
+                                    if learningSchedules
+                                        each learningSchedule in learningSchedules
+                                            tr(id=learningSchedule.learningScheduleId)
+                                                td= learningSchedule.courseName
+                                                td= learningSchedule.room
+                                                td= learningSchedule.date
+                                                td= learningSchedule.time
+                                                td= learningSchedule.teacherName
+                                                td(class="d-flex")
+                                                    button(type="button" class="btn btn-outline-primary editLearningSchedule" data-learningScheduleId=learningSchedule.learningScheduleId) Cập nhật
+                                                    button(type="button" class="ml-2 btn btn-outline-danger deleteLearningSchedule" data-learningScheduleId=learningSchedule.learningScheduleId) Xóa
 
                             br
                             br

@@ -1,89 +1,87 @@
-const Schedule = require("../models/schedule.model");
+const LearningSchedule = require("../models/learningSchedule.model");
+const User = require("../models/user.model");
+const Course = require("../models/course.model");
 const { v4: v4UniqueId } = require("uuid");
 
-// Get course by id
-module.exports.getCourse = async (req, res) => {
-    let course = await Course.findOne({
-        courseId: req.params.id,
+// Get learning schedule by id
+module.exports.getLearningSchedule = async (req, res) => {
+    let learningSchedule = await LearningSchedule.findOne({
+        learningScheduleId: req.params.id,
     });
 
-    if (course) {
+    if (learningSchedule) {
         res.json({
             code: 1,
-            data: course,
+            data: learningSchedule,
         });
-    } else if (!course) {
+    } else if (!learningSchedule) {
         res.json({
             code: 0,
-            message: "Khóa học không tồn tại",
+            message: "Lịch học không tồn tại",
         });
     }
 };
 
-// Add course
-module.exports.addCourse = async (req, res) => {
-    let {
-        courseName,
-        courseDescription,
-        courseFee,
-        courseStart,
-        courseTeacher,
-    } = req.body;
+// Add learning schedule
+module.exports.addLearningSchedule = async (req, res) => {
+    let { courseId, room, date, time, teacherId } = req.body;
 
-    if (courseName === "") {
+    if (courseId === "") {
         res.json({
             code: 0,
-            message: "Tên khóa học không được bỏ trống",
+            message: "Tên lịch học không được bỏ trống",
         });
-    } else if (courseDescription === "") {
+    } else if (room === "") {
         res.json({
             code: 0,
-            message: "Mô tả khóa học không được bỏ trống",
+            message: "Phòng không được bỏ trống",
         });
-    } else if (courseFee === "") {
+    } else if (date === "") {
         res.json({
             code: 0,
-            message: "Học phí không được bỏ trống",
+            message: "Ngày không được bỏ trống",
         });
-    } else if (courseStart === "") {
+    } else if (time === "") {
         res.json({
             code: 0,
-            message: "Ngày bắt đầu không được bỏ trống",
+            message: "Thời gian không được bỏ trống",
         });
-    } else if (courseTeacher === "") {
+    } else if (teacherId === "") {
         res.json({
             code: 0,
             message: "Giảng viên không được bỏ trống",
         });
     } else {
-        let course = new Course();
-        let courseId = v4UniqueId();
+        let learningSchedule = new LearningSchedule();
+        let user = await User.findOne({ teacherId });
+        let course = await Course.findOne({ courseId });
+        let learningScheduleId = v4UniqueId();
 
-        course.courseId = courseId;
-        course.courseName = courseName;
-        course.courseDescription = courseDescription;
-        course.courseStart = courseStart;
-        course.courseFee = courseFee;
-        course.courseTeacher = courseTeacher;
-        course.save();
+        learningSchedule.learningScheduleId = learningScheduleId;
+        learningSchedule.courseId = courseId;
+        learningSchedule.date = date;
+        learningSchedule.room = room;
+        learningSchedule.time = time;
+        learningSchedule.teacherId = teacherId;
+        learningSchedule.save();
 
         res.json({
             code: 1,
-            message: "Thêm khóa học thành công",
+            message: "Thêm lịch học thành công",
             data: {
-                courseId,
-                courseName,
-                courseDescription,
-                courseFee,
-                courseStart,
-                courseTeacher,
+                learningScheduleId,
+                courseName: course.courseName,
+                date,
+                time,
+                room,
+                teacherName: user.fullname,
             },
         });
     }
 };
 
-// Edit course
-module.exports.editCourse = async (req, res) => {
+// Edit learning schedule
+module.exports.editLearningSchedule = async (req, res) => {
     let {
         courseName,
         courseDescription,
@@ -145,8 +143,8 @@ module.exports.editCourse = async (req, res) => {
     }
 };
 
-// Delete course
-module.exports.deleteCourse = async (req, res) => {
+// Delete learning schedule
+module.exports.deleteLearningSchedule = async (req, res) => {
     let { id } = req.params;
     let course = await Course.deleteOne({ courseId: id });
 
