@@ -15,7 +15,6 @@ $(document).ready(() => {
                 room: $("#learningScheduleRoom").val(),
                 date: $("#learningScheduleDate").val(),
                 time: $("#learningScheduleTime").val(),
-                teacherId: $("#learningScheduleTeacherId").val(),
             }),
         })
             .then((response) => response.json())
@@ -30,7 +29,6 @@ $(document).ready(() => {
                         $("#learningScheduleRoom").val("");
                         $("#learningScheduleDate").val("");
                         $("#learningScheduleTime").val("");
-                        $("#learningScheduleTeacherId").val("");
                         $("#addLearningScheduleModal").modal("hide");
                         $("#addLearningScheduleSuccess").text("");
 

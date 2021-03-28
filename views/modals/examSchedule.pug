@@ -1,0 +1,117 @@
+//- //- Add learning schedule modal
+//- #addLearningScheduleModal.modal.fade(role='dialog')
+//-     .modal-dialog.modal-lg(role='content')
+//-         .modal-content
+//-             .modal-header
+//-                 h4.modal-title Thêm lịch học mới
+//-                 button.close(type='close', data-dismiss='modal') &times;
+//-             .modal-body
+//-                 form
+//-                     div.form-group.row
+//-                         label(class="col-md-12 col-form-label", for="learningScheduleCourseId") Tên khóa học
+//-                         div(class="col-md-12")
+//-                             select(class="form-control", id="learningScheduleCourseId")
+//-                                 option(value="") (Chọn khóa học)
+                                
+//-                                 if courses
+//-                                     each course in courses
+//-                                         option(value=course.courseId) #{course.courseName}
+
+//-                     div.form-group.row
+//-                         label(class="col-form-label col-md-12", for="learningScheduleRoom") Phòng
+//-                         div(class="col-md-12")
+//-                             input(type="text", class="form-control", id="learningScheduleRoom")
+                    
+//-                     div.form-group.row
+//-                         label(class="col-form-label col-md-12", for="learningScheduleDate") Ngày
+//-                         div(class="col-md-12")
+//-                             input(type="text", class="form-control", id="learningScheduleDate")
+                    
+//-                     div.form-group.row
+//-                         label(class="col-form-label col-md-12", for="learningScheduleTime") Thời gian
+//-                         div(class="col-md-12")
+//-                             input(type="text", class="form-control", id="learningScheduleTime")
+                    
+//-                     div.form-group.row
+//-                         label(class="col-form-label col-md-12", for="learningScheduleTeacherId") Giảng viên	
+//-                         div(class="col-md-12")
+//-                             select(class="form-control", id="learningScheduleTeacherId")
+//-                                 option(value="") (Chọn giảng viên)
+                                
+//-                                 if users
+//-                                     each user in users
+//-                                         if user.role === 2
+//-                                             option(value=user.teacherId) #{user.fullname}
+
+//-                     p(class="text-success text-center" id="addLearningScheduleSuccess")
+//-                     p(class="text-danger text-center" id="addLearningScheduleFailed")
+
+//-                     div.d-flex.justify-content-end
+//-                         button(class="btn btn-success", id="addLearningScheduleButton") Thêm
+//-                         button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+
+//- //- Edit learning schedule modal
+//- #editLearningScheduleModal.modal.fade(role='dialog')
+//-     .modal-dialog.modal-lg(role='content')
+//-         .modal-content
+//-             .modal-header
+//-                 h4.modal-title Cập nhật lịch học
+//-                 button.close(type='close', data-dismiss='modal') &times;
+//-             .modal-body
+//-                 form
+//-                     div.form-group.row
+//-                         label(class="col-md-12 col-form-label", for="editLearningScheduleCourseId") Tên khóa học
+//-                         div(class="col-md-12")
+//-                             select(class="form-control", id="editLearningScheduleCourseId")
+//-                                 option(value="") (Chọn khóa học)
+                                
+//-                                 if courses
+//-                                     each course in courses
+//-                                         option(value=course.courseId) #{course.courseName}
+
+//-                     div.form-group.row
+//-                         label(class="col-form-label col-md-12", for="editLearningScheduleRoom") Phòng
+//-                         div(class="col-md-12")
+//-                             input(type="text", class="form-control", id="editLearningScheduleRoom")
+                    
+//-                     div.form-group.row
+//-                         label(class="col-form-label col-md-12", for="editLearningScheduleDate") Ngày
+//-                         div(class="col-md-12")
+//-                             input(type="text", class="form-control", id="editLearningScheduleDate")
+                    
+//-                     div.form-group.row
+//-                         label(class="col-form-label col-md-12", for="editLearningScheduleTime") Thời gian
+//-                         div(class="col-md-12")
+//-                             input(type="text", class="form-control", id="editLearningScheduleTime")
+                    
+//-                     div.form-group.row
+//-                         label(class="col-form-label col-md-12", for="editLearningScheduleTeacherId") Giảng viên	
+//-                         div(class="col-md-12")
+//-                             select(class="form-control", id="editLearningScheduleTeacherId")
+//-                                 option(value="") (Chọn giảng viên)
+                                
+//-                                 if users
+//-                                     each user in users
+//-                                         if user.role === 2
+//-                                             option(value=user.teacherId) #{user.fullname}
+                    
+//-                     p(class="text-success text-center" id="editLearningScheduleSuccess")
+//-                     p(class="text-danger text-center" id="editLearningScheduleFailed")
+
+//-                     div.d-flex.justify-content-end
+//-                         button(class="btn btn-primary", id="editLearningScheduleButton") Cập nhật
+//-                         button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+
+//- //- Delete learning schedule modal
+//- #deleteLearningScheduleModal.modal.fade(role='dialog')
+//-     .modal-dialog.modal-lg(role='content')
+//-         .modal-content
+//-             .modal-header
+//-                 h4.modal-title#deleteLearningScheduleTitle
+//-                 button.close(type='close', data-dismiss='modal') &times;
+//-             .modal-body
+//-                     p(class="text-success text-center" id="deleteLearningScheduleSuccess")
+
+//-                     div.d-flex.justify-content-end
+//-                         button(class="btn btn-danger", id="deleteLearningScheduleButton") Xóa
+//-                         button(class="btn btn-default ml-3", data-dismiss="modal") Đóng

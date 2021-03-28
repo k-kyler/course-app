@@ -19,9 +19,6 @@ $(document).ready(() => {
                     $("#editLearningScheduleRoom").val(result.data.room);
                     $("#editLearningScheduleDate").val(result.data.date);
                     $("#editLearningScheduleTime").val(result.data.time);
-                    $("#editLearningScheduleTeacherId").val(
-                        result.data.teacherId
-                    );
                 } else if (result.code === 0) {
                     $("#editLearningScheduleCourseId").val("");
                     $("#editLearningScheduleRoom").val("");
@@ -51,7 +48,6 @@ $(document).ready(() => {
                 room: $("#editLearningScheduleRoom").val(),
                 date: $("#editLearningScheduleDate").val(),
                 time: $("#editLearningScheduleTime").val(),
-                teacherId: $("#editLearningScheduleTeacherId").val(),
             }),
         })
             .then((response) => response.json())
@@ -65,7 +61,6 @@ $(document).ready(() => {
                         $("#editLearningScheduleRoom").val("");
                         $("#editLearningScheduleDate").val("");
                         $("#editLearningScheduleTime").val("");
-                        $("#editLearningScheduleTeacherId").val("");
                         $("#editLearningScheduleModal").modal("hide");
                         $("#editLearningScheduleSuccess").text("");
                         $(`tr#${learningScheduleId} td:nth-child(1)`).html(

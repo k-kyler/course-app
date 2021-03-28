@@ -30,6 +30,7 @@ const courseEnrollRoute = require("./routes/courseEnroll.route");
 const paymentRoute = require("./routes/payment.route");
 const paymentHistoryCoursesRoute = require("./routes/paymentHistoryCourses.route");
 const learningScheduleRoute = require("./routes/learningSchedule.route");
+const examScheduleRoute = require("./routes/examSchedule.route");
 
 // Require custom middlewares
 const authMiddleware = require("./middlewares/auth.middleware");
@@ -115,6 +116,9 @@ app.use(
 
 // Learning schedule routes
 app.use("/learningschedule", authMiddleware.requireAuth, learningScheduleRoute);
+
+// Exam schedule routes
+app.use("/examschedule", authMiddleware.requireAuth, examScheduleRoute);
 
 // Server listen
 app.listen(port, () => {

@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 let learningScheduleSchema = new mongoose.Schema({
-    teacherId: String,
     learningScheduleId: String,
     courseId: String,
     room: String,

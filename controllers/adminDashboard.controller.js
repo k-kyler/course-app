@@ -30,15 +30,11 @@ module.exports.adminCourse = async (req, res) => {
 // Schedule
 module.exports.adminSchedule = async (req, res) => {
     let user = await User.findById(req.signedCookies.userId);
-    let users = await User.find();
     let courses = await Course.find();
     let learningSchedules = await LearningSchedule.find();
     let convertLearningSchedules = [];
 
     for (let learningSchedule of learningSchedules) {
-        let teacher = await User.findOne({
-            teacherId: learningSchedule.teacherId,
-        });
         let course = await Course.findOne({
             courseId: learningSchedule.courseId,
         });
@@ -48,14 +44,13 @@ module.exports.adminSchedule = async (req, res) => {
             room: learningSchedule.room,
             date: learningSchedule.date,
             time: learningSchedule.time,
-            teacherName: teacher.fullname,
+            teacherName: course.courseTeacher,
             courseName: course.courseName,
         });
     }
 
     res.render("dashboards/admin-staff/schedule", {
         user,
-        users,
         courses,
         learningSchedules: convertLearningSchedules,
     });

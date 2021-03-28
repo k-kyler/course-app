@@ -31,17 +31,6 @@
                         label(class="col-form-label col-md-12", for="learningScheduleTime") Thời gian
                         div(class="col-md-12")
                             input(type="text", class="form-control", id="learningScheduleTime")
-                    
-                    div.form-group.row
-                        label(class="col-form-label col-md-12", for="learningScheduleTeacherId") Giảng viên	
-                        div(class="col-md-12")
-                            select(class="form-control", id="learningScheduleTeacherId")
-                                option(value="") (Chọn giảng viên)
-                                
-                                if users
-                                    each user in users
-                                        if user.role === 2
-                                            option(value=user.teacherId) #{user.fullname}
 
                     p(class="text-success text-center" id="addLearningScheduleSuccess")
                     p(class="text-danger text-center" id="addLearningScheduleFailed")
@@ -83,17 +72,6 @@
                         label(class="col-form-label col-md-12", for="editLearningScheduleTime") Thời gian
                         div(class="col-md-12")
                             input(type="text", class="form-control", id="editLearningScheduleTime")
-                    
-                    div.form-group.row
-                        label(class="col-form-label col-md-12", for="editLearningScheduleTeacherId") Giảng viên	
-                        div(class="col-md-12")
-                            select(class="form-control", id="editLearningScheduleTeacherId")
-                                option(value="") (Chọn giảng viên)
-                                
-                                if users
-                                    each user in users
-                                        if user.role === 2
-                                            option(value=user.teacherId) #{user.fullname}
                     
                     p(class="text-success text-center" id="editLearningScheduleSuccess")
                     p(class="text-danger text-center" id="editLearningScheduleFailed")
