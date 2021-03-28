@@ -82,62 +82,58 @@ module.exports.addLearningSchedule = async (req, res) => {
 
 // Edit learning schedule
 module.exports.editLearningSchedule = async (req, res) => {
-    let {
-        courseName,
-        courseDescription,
-        courseFee,
-        courseStart,
-        courseTeacher,
-    } = req.body;
+    let { courseId, room, date, time, teacherId } = req.body;
     let { id } = req.params;
 
-    if (courseName === "") {
+    if (courseId === "") {
         res.json({
             code: 0,
-            message: "Tên khóa học không được bỏ trống",
+            message: "Tên lịch học không được bỏ trống",
         });
-    } else if (courseDescription === "") {
+    } else if (room === "") {
         res.json({
             code: 0,
-            message: "Mô tả khóa học không được bỏ trống",
+            message: "Phòng không được bỏ trống",
         });
-    } else if (courseFee === "") {
+    } else if (date === "") {
         res.json({
             code: 0,
-            message: "Học phí không được bỏ trống",
+            message: "Ngày không được bỏ trống",
         });
-    } else if (courseStart === "") {
+    } else if (time === "") {
         res.json({
             code: 0,
-            message: "Ngày bắt đầu không được bỏ trống",
+            message: "Thời gian không được bỏ trống",
         });
-    } else if (courseTeacher === "") {
+    } else if (teacherId === "") {
         res.json({
             code: 0,
             message: "Giảng viên không được bỏ trống",
         });
     } else {
-        let course = await Course.findOneAndUpdate(
-            { courseId: id },
+        let learningSchedule = await LearningSchedule.findOneAndUpdate(
+            { learningScheduleId: id },
             {
-                courseName,
-                courseDescription,
-                courseFee,
-                courseStart,
-                courseTeacher,
+                courseId,
+                room,
+                date,
+                time,
+                teacherId,
             },
             { new: true }
         );
+        let teacher = await User.findOne({ teacherId });
+        let course = await Course.findOne({ courseId });
 
         res.json({
             code: 1,
-            message: "Cập nhật khóa học thành công",
+            message: "Cập nhật lịch học thành công",
             data: {
-                courseName,
-                courseDescription,
-                courseFee,
-                courseStart,
-                courseTeacher,
+                courseName: course.courseName,
+                room,
+                date,
+                time,
+                teacherName: teacher.fullname,
             },
         });
     }
