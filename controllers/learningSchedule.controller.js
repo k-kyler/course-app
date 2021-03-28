@@ -8,11 +8,13 @@ module.exports.getLearningSchedule = async (req, res) => {
     let learningSchedule = await LearningSchedule.findOne({
         learningScheduleId: req.params.id,
     });
+    let course = await Course.findOne({ courseId: learningSchedule.courseId });
 
     if (learningSchedule) {
         res.json({
             code: 1,
             data: learningSchedule,
+            courseName: course.courseName,
         });
     } else if (!learningSchedule) {
         res.json({
@@ -142,10 +144,12 @@ module.exports.editLearningSchedule = async (req, res) => {
 // Delete learning schedule
 module.exports.deleteLearningSchedule = async (req, res) => {
     let { id } = req.params;
-    let course = await Course.deleteOne({ courseId: id });
+    let learningSchedule = await LearningSchedule.deleteOne({
+        learningScheduleId: id,
+    });
 
     res.json({
         code: 1,
-        message: "Xóa khóa học thành công",
+        message: "Xóa lịch học thành công",
     });
 };
