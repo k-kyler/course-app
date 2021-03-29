@@ -1,11 +1,22 @@
 const mongoose = require("mongoose");
 
-let examScheduleSchema = new mongoose.Schema({});
+let examScheduleSchema = new mongoose.Schema({
+    examScheduleId: String,
+    courseId: String,
+    examRoom: String,
+    examDate: String,
+    examTime: String,
+    students: [
+        {
+            studentId: String,
+        },
+    ],
+});
 
-let examSchedule = mongoose.model(
-    "examSchedule",
+let ExamSchedule = mongoose.model(
+    "ExamSchedule",
     examScheduleSchema,
     "examschedules"
 );
 
-module.exports = examSchedule;
+module.exports = ExamSchedule;

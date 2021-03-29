@@ -30,6 +30,7 @@ module.exports.adminCourse = async (req, res) => {
 // Schedule
 module.exports.adminSchedule = async (req, res) => {
     let user = await User.findById(req.signedCookies.userId);
+    let users = await User.find();
     let courses = await Course.find();
     let learningSchedules = await LearningSchedule.find();
     let convertLearningSchedules = [];
@@ -51,6 +52,7 @@ module.exports.adminSchedule = async (req, res) => {
 
     res.render("dashboards/admin-staff/schedule", {
         user,
+        users,
         courses,
         learningSchedules: convertLearningSchedules,
     });

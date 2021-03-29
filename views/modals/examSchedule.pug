@@ -1,56 +1,61 @@
-//- //- Add learning schedule modal
-//- #addLearningScheduleModal.modal.fade(role='dialog')
-//-     .modal-dialog.modal-lg(role='content')
-//-         .modal-content
-//-             .modal-header
-//-                 h4.modal-title Thêm lịch học mới
-//-                 button.close(type='close', data-dismiss='modal') &times;
-//-             .modal-body
-//-                 form
-//-                     div.form-group.row
-//-                         label(class="col-md-12 col-form-label", for="learningScheduleCourseId") Tên khóa học
-//-                         div(class="col-md-12")
-//-                             select(class="form-control", id="learningScheduleCourseId")
-//-                                 option(value="") (Chọn khóa học)
+//- Add exam schedule modal
+#addExamScheduleModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title Thêm lịch thi mới
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                form
+                    div.form-group.row
+                        label(class="col-md-12 col-form-label", for="examScheduleCourseId") Tên khóa học
+                        div(class="col-md-12")
+                            select(class="form-control", id="examScheduleCourseId")
+                                option(value="") (Chọn khóa học)
                                 
-//-                                 if courses
-//-                                     each course in courses
-//-                                         option(value=course.courseId) #{course.courseName}
+                                if courses
+                                    each course in courses
+                                        option(value=course.courseId) #{course.courseName}
 
-//-                     div.form-group.row
-//-                         label(class="col-form-label col-md-12", for="learningScheduleRoom") Phòng
-//-                         div(class="col-md-12")
-//-                             input(type="text", class="form-control", id="learningScheduleRoom")
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="examScheduleRoom") Phòng thi
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="examScheduleRoom")
                     
-//-                     div.form-group.row
-//-                         label(class="col-form-label col-md-12", for="learningScheduleDate") Ngày
-//-                         div(class="col-md-12")
-//-                             input(type="text", class="form-control", id="learningScheduleDate")
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="examScheduleDate") Ngày thi
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="examScheduleDate")
                     
-//-                     div.form-group.row
-//-                         label(class="col-form-label col-md-12", for="learningScheduleTime") Thời gian
-//-                         div(class="col-md-12")
-//-                             input(type="text", class="form-control", id="learningScheduleTime")
-                    
-//-                     div.form-group.row
-//-                         label(class="col-form-label col-md-12", for="learningScheduleTeacherId") Giảng viên	
-//-                         div(class="col-md-12")
-//-                             select(class="form-control", id="learningScheduleTeacherId")
-//-                                 option(value="") (Chọn giảng viên)
+                    div.form-group.row
+                        label(class="col-form-label col-md-12", for="examScheduleTime") Thời gian
+                        div(class="col-md-12")
+                            input(type="text", class="form-control", id="examScheduleTime")
+
+                    div.form-group.row
+                        label(class="col-form-label col-md-12") Thêm học viên
+                        div(class="col-md-12")
+                            select(class="form-control", id="examScheduleStudents")
+                                option(value="") (Chọn học viên)
                                 
-//-                                 if users
-//-                                     each user in users
-//-                                         if user.role === 2
-//-                                             option(value=user.teacherId) #{user.fullname}
+                                if users
+                                    each user in users
+                                        if user.role === 4
+                                            option(value=user.studentId data-name=user.fullname) #{user.fullname}
+                            
+                    div.form-group.row
+                        label(class="col-form-label col-md-12") Danh sách học viên dự thi
+                        div(class="col-md-12")
+                            div(id="examScheduleStudentsList")
 
-//-                     p(class="text-success text-center" id="addLearningScheduleSuccess")
-//-                     p(class="text-danger text-center" id="addLearningScheduleFailed")
+                    p(class="text-success text-center" id="addExamScheduleSuccess")
+                    p(class="text-danger text-center" id="addExamScheduleFailed")
 
-//-                     div.d-flex.justify-content-end
-//-                         button(class="btn btn-success", id="addLearningScheduleButton") Thêm
-//-                         button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-success", id="addExamScheduleButton") Thêm
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
 
-//- //- Edit learning schedule modal
+//- Edit learning schedule modal
 //- #editLearningScheduleModal.modal.fade(role='dialog')
 //-     .modal-dialog.modal-lg(role='content')
 //-         .modal-content
@@ -83,17 +88,6 @@
 //-                         label(class="col-form-label col-md-12", for="editLearningScheduleTime") Thời gian
 //-                         div(class="col-md-12")
 //-                             input(type="text", class="form-control", id="editLearningScheduleTime")
-                    
-//-                     div.form-group.row
-//-                         label(class="col-form-label col-md-12", for="editLearningScheduleTeacherId") Giảng viên	
-//-                         div(class="col-md-12")
-//-                             select(class="form-control", id="editLearningScheduleTeacherId")
-//-                                 option(value="") (Chọn giảng viên)
-                                
-//-                                 if users
-//-                                     each user in users
-//-                                         if user.role === 2
-//-                                             option(value=user.teacherId) #{user.fullname}
                     
 //-                     p(class="text-success text-center" id="editLearningScheduleSuccess")
 //-                     p(class="text-danger text-center" id="editLearningScheduleFailed")

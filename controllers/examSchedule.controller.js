@@ -1,32 +1,31 @@
-const LearningSchedule = require("../models/learningSchedule.model");
-const User = require("../models/user.model");
+const ExamSchedule = require("../models/examSchedule.model");
 const Course = require("../models/course.model");
 const { v4: v4UniqueId } = require("uuid");
 
 // Get exam schedule by id
 module.exports.getExamSchedule = async (req, res) => {
-    let learningSchedule = await LearningSchedule.findOne({
-        learningScheduleId: req.params.id,
+    let examSchedule = await ExamSchedule.findOne({
+        examScheduleId: req.params.id,
     });
-    let course = await Course.findOne({ courseId: learningSchedule.courseId });
+    let course = await Course.findOne({ courseId: examSchedule.courseId });
 
-    if (learningSchedule) {
+    if (examSchedule) {
         res.json({
             code: 1,
-            data: learningSchedule,
+            data: examSchedule,
             courseName: course.courseName,
         });
-    } else if (!learningSchedule) {
+    } else if (!examSchedule) {
         res.json({
             code: 0,
-            message: "Lịch học không tồn tại",
+            message: "Lịch thi không tồn tại",
         });
     }
 };
 
 // Add exam schedule
 module.exports.addExamSchedule = async (req, res) => {
-    let { courseId, room, date, time, teacherId } = req.body;
+    let { courseId, room, date, time } = req.body;
 
     if (courseId === "") {
         res.json({
@@ -48,14 +47,8 @@ module.exports.addExamSchedule = async (req, res) => {
             code: 0,
             message: "Thời gian không được bỏ trống",
         });
-    } else if (teacherId === "") {
-        res.json({
-            code: 0,
-            message: "Giảng viên không được bỏ trống",
-        });
     } else {
         let learningSchedule = new LearningSchedule();
-        let user = await User.findOne({ teacherId });
         let course = await Course.findOne({ courseId });
         let learningScheduleId = v4UniqueId();
 
@@ -64,7 +57,6 @@ module.exports.addExamSchedule = async (req, res) => {
         learningSchedule.date = date;
         learningSchedule.room = room;
         learningSchedule.time = time;
-        learningSchedule.teacherId = teacherId;
         learningSchedule.save();
 
         res.json({
@@ -76,7 +68,7 @@ module.exports.addExamSchedule = async (req, res) => {
                 date,
                 time,
                 room,
-                teacherName: user.fullname,
+                teacherName: course.courseTeacher,
             },
         });
     }
@@ -84,7 +76,7 @@ module.exports.addExamSchedule = async (req, res) => {
 
 // Edit exam schedule
 module.exports.editExamSchedule = async (req, res) => {
-    let { courseId, room, date, time, teacherId } = req.body;
+    let { courseId, room, date, time } = req.body;
     let { id } = req.params;
 
     if (courseId === "") {
@@ -107,11 +99,6 @@ module.exports.editExamSchedule = async (req, res) => {
             code: 0,
             message: "Thời gian không được bỏ trống",
         });
-    } else if (teacherId === "") {
-        res.json({
-            code: 0,
-            message: "Giảng viên không được bỏ trống",
-        });
     } else {
         let learningSchedule = await LearningSchedule.findOneAndUpdate(
             { learningScheduleId: id },
@@ -120,11 +107,9 @@ module.exports.editExamSchedule = async (req, res) => {
                 room,
                 date,
                 time,
-                teacherId,
             },
             { new: true }
         );
-        let teacher = await User.findOne({ teacherId });
         let course = await Course.findOne({ courseId });
 
         res.json({
@@ -135,7 +120,7 @@ module.exports.editExamSchedule = async (req, res) => {
                 room,
                 date,
                 time,
-                teacherName: teacher.fullname,
+                teacherName: course.courseTeacher,
             },
         });
     }
