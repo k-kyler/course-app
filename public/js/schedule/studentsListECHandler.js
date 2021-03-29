@@ -18,13 +18,16 @@ $(document).ready(() => {
                             <button data-studentECId="deleteStudentEC-${studentId}" type="button" class="btn btn-link text-danger deleteStudentECButton">
                                 <i data-studentECId="deleteStudentEC-${studentId}" class="fas fa-ban"></i>
                             </button>
-                            <p id="studentEC-${studentId}" class="studentECName text-primary mb-0">${result.data.fullname}</p>
+                            <p id="studentEC-${studentId}" class="text-primary mb-0">${result.data.fullname}</p>
                         </div>
                     `);
                     }
                 })
                 .catch((error) => console.log(error));
-        } else {
+        } else if (
+            studentId &&
+            document.getElementById(`deleteStudentEC-${studentId}`)
+        ) {
             $("#addExamScheduleFailed").html("Học viên đã có trong danh sách");
         }
     });
@@ -35,6 +38,7 @@ $(document).ready(() => {
 
         let studentECId = event.target.dataset.studentecid;
 
+        $("#addExamScheduleFailed").html("");
         $(`div#${studentECId}`).remove();
     });
 });

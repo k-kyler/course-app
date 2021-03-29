@@ -3,18 +3,30 @@ $(document).ready(() => {
         $("#addExamScheduleModal").modal("toggle");
     });
 
-    $("#addLearningScheduleButton").click((event) => {
+    $("#addExamScheduleButton").click((event) => {
         event.preventDefault();
-        fetch("/learningschedule", {
+
+        let examScheduleStudentsList = [];
+
+        $("#examScheduleStudentsList p").each((index, element) => {
+            examScheduleStudentsList.push({
+                studentId: element.id.split("studentEC-")[1],
+            });
+        });
+
+        $("#addExamScheduleFailed").html("");
+
+        fetch("/examschedule", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                courseId: $("#learningScheduleCourseId").val(),
-                room: $("#learningScheduleRoom").val(),
-                date: $("#learningScheduleDate").val(),
-                time: $("#learningScheduleTime").val(),
+                courseId: $("#examScheduleCourseId").val(),
+                examRoom: $("#examScheduleRoom").val(),
+                examDate: $("#examScheduleDate").val(),
+                examTime: $("#examScheduleTime").val(),
+                students: examScheduleStudentsList,
             }),
         })
             .then((response) => response.json())
