@@ -90,37 +90,43 @@ module.exports.addExamSchedule = async (req, res) => {
 
 // Edit exam schedule
 module.exports.editExamSchedule = async (req, res) => {
-    let { courseId, room, date, time } = req.body;
+    let { courseId, examRoom, examDate, examTime, students } = req.body;
     let { id } = req.params;
 
     if (courseId === "") {
         res.json({
             code: 0,
-            message: "Tên lịch học không được bỏ trống",
+            message: "Tên lịch thi không được bỏ trống",
         });
-    } else if (room === "") {
+    } else if (examRoom === "") {
         res.json({
             code: 0,
-            message: "Phòng không được bỏ trống",
+            message: "Phòng thi không được bỏ trống",
         });
-    } else if (date === "") {
+    } else if (examDate === "") {
         res.json({
             code: 0,
-            message: "Ngày không được bỏ trống",
+            message: "Ngày thi không được bỏ trống",
         });
-    } else if (time === "") {
+    } else if (examTime === "") {
         res.json({
             code: 0,
             message: "Thời gian không được bỏ trống",
         });
+    } else if (students === []) {
+        res.json({
+            code: 0,
+            message: "Không có danh sách học viên dự thi",
+        });
     } else {
-        let learningSchedule = await LearningSchedule.findOneAndUpdate(
-            { learningScheduleId: id },
+        let examSchedule = await ExamSchedule.findOneAndUpdate(
+            { examScheduleId: id },
             {
                 courseId,
-                room,
-                date,
-                time,
+                examRoom,
+                examDate,
+                examTime,
+                students,
             },
             { new: true }
         );
@@ -128,13 +134,12 @@ module.exports.editExamSchedule = async (req, res) => {
 
         res.json({
             code: 1,
-            message: "Cập nhật lịch học thành công",
+            message: "Cập nhật lịch thi thành công",
             data: {
                 courseName: course.courseName,
-                room,
-                date,
-                time,
-                teacherName: course.courseTeacher,
+                examRoom,
+                examDate,
+                examTime,
             },
         });
     }
@@ -143,12 +148,12 @@ module.exports.editExamSchedule = async (req, res) => {
 // Delete exam schedule
 module.exports.deleteExamSchedule = async (req, res) => {
     let { id } = req.params;
-    let learningSchedule = await LearningSchedule.deleteOne({
-        learningScheduleId: id,
+    let examSchedule = await ExamSchedule.deleteOne({
+        examScheduleId: id,
     });
 
     res.json({
         code: 1,
-        message: "Xóa lịch học thành công",
+        message: "Xóa lịch thi thành công",
     });
 };
