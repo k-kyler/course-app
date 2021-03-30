@@ -58,11 +58,11 @@ block content
 
                     // Get Advices
                     .getAdvices(style='border-radius: 10px')
-                        form(action='', onsubmit='return CheckInput()', method='POST')
+                        form
                             .form-group
-                                input#phone.form-control(type='text', onclick='ClearErrorMess()', placeholder='Số điện thoại', name='phone')
+                                input.form-control(type='text', placeholder='Số điện thoại')
                             .form-group
-                                input#name.form-control(type='text', onclick='ClearErrorMess()', placeholder='Tên', name='name')
+                                input.form-control(type='text', placeholder='Tên')
                             select#literacy.form-control
                                 option(disabled='', selected='', value='') Trình độ học vấn
                                 option(value='Primary') Tiểu học
