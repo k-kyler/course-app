@@ -34,7 +34,7 @@ $(document).ready(() => {
                         $("#addCourseModal").modal("hide");
                         $("#addCourseSuccess").text("");
 
-                        $("#coursesList").append(`
+                        $("#adminCoursesList").append(`
                             <tr id=${result.data.courseId}>
                                 <td>${result.data.courseName}</td>
                                 <td>${Intl.NumberFormat().format(

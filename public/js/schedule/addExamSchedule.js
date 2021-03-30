@@ -33,27 +33,29 @@ $(document).ready(() => {
             .then((result) => {
                 // Success result
                 if (result.code === 1) {
-                    $("#addLearningScheduleFailed").text("");
-                    $("#addLearningScheduleSuccess").text(result.message);
+                    $("#addExamScheduleFailed").text("");
+                    $("#addExamScheduleSuccess").text(result.message);
 
                     setTimeout(() => {
-                        $("#learningScheduleCourseId").val("");
-                        $("#learningScheduleRoom").val("");
-                        $("#learningScheduleDate").val("");
-                        $("#learningScheduleTime").val("");
-                        $("#addLearningScheduleModal").modal("hide");
-                        $("#addLearningScheduleSuccess").text("");
+                        $("#examScheduleCourseId").val("");
+                        $("#examScheduleRoom").val("");
+                        $("#examScheduleDate").val("");
+                        $("#examScheduleTime").val("");
+                        $("#examScheduleStudents").val("");
+                        $("#examScheduleStudentsList").html("");
+                        $("#addExamScheduleModal").modal("hide");
+                        $("#addExamScheduleSuccess").text("");
 
-                        $("#learningScheduleList").append(`
-                            <tr id=${result.data.learningScheduleId}>
+                        $("#examScheduleList").append(`
+                            <tr id=${result.data.examScheduleId}>
                                 <td>${result.data.courseName}</td>
-                                <td>${result.data.room}</td>
-                                <td>${result.data.date}</td>
-                                <td>${result.data.time}</td>
-                                <td>${result.data.teacherName}</td>
+                                <td>${result.data.examRoom}</td>
+                                <td>${result.data.examDate}</td>
+                                <td>${result.data.examTime}</td>
                                 <td class="d-flex">
-                                    <button type="button" class="btn btn-outline-primary editLearningSchedule" data-learningScheduleId=${result.data.learningScheduleId}>Cập nhật</button>
-                                    <button type="button" class="ml-2 btn btn-outline-danger deleteLearningSchedule" data-learningScheduleId=${result.data.learningScheduleId}>Xóa</button>
+                                    <button type="button" class="btn btn-outline-success viewExamSchedule" data-examScheduleId=${result.data.examScheduleId}>Chi tiết</button>
+                                    <button type="button" class="ml-2 btn btn-outline-primary editExamSchedule" data-examScheduleId=${result.data.examScheduleId}>Cập nhật</button>
+                                    <button type="button" class="ml-2 btn btn-outline-danger deleteExamSchedule" data-examScheduleId=${result.data.examScheduleId}>Xóa</button>
                                 </td>
                             </tr>
                         `);
@@ -62,8 +64,8 @@ $(document).ready(() => {
 
                 // Failed result
                 else if (result.code === 0) {
-                    $("#addLearningScheduleSuccess").text("");
-                    $("#addLearningScheduleFailed").text(result.message);
+                    $("#addExamScheduleSuccess").text("");
+                    $("#addExamScheduleFailed").text(result.message);
                 }
             })
             .catch((error) => console.log(error));

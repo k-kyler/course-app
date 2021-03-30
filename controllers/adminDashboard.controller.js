@@ -2,6 +2,7 @@ const User = require("../models/user.model");
 const Notification = require("../models/notification.model");
 const Course = require("../models/course.model");
 const LearningSchedule = require("../models/learningSchedule.model");
+const ExamSchedule = require("../models/examSchedule.model");
 
 // Notification
 module.exports.adminNotification = async (req, res) => {
@@ -33,7 +34,9 @@ module.exports.adminSchedule = async (req, res) => {
     let users = await User.find();
     let courses = await Course.find();
     let learningSchedules = await LearningSchedule.find();
+    let examSchedules = await ExamSchedule.find();
     let convertLearningSchedules = [];
+    let convertExamSchedules = [];
 
     for (let learningSchedule of learningSchedules) {
         let course = await Course.findOne({
@@ -50,11 +53,26 @@ module.exports.adminSchedule = async (req, res) => {
         });
     }
 
+    for (let examSchedule of examSchedules) {
+        let course = await Course.findOne({
+            courseId: examSchedule.courseId,
+        });
+
+        convertExamSchedules.push({
+            examScheduleId: examSchedule.examScheduleId,
+            examRoom: examSchedule.examRoom,
+            examDate: examSchedule.examDate,
+            examTime: examSchedule.examTime,
+            courseName: course.courseName,
+        });
+    }
+
     res.render("dashboards/admin-staff/schedule", {
         user,
         users,
         courses,
         learningSchedules: convertLearningSchedules,
+        examSchedules: convertExamSchedules,
     });
 };
 

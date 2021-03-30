@@ -1,5 +1,6 @@
 const ExamSchedule = require("../models/examSchedule.model");
 const Course = require("../models/course.model");
+const User = require("../models/user.model");
 const { v4: v4UniqueId } = require("uuid");
 
 // Get exam schedule by id
@@ -8,12 +9,20 @@ module.exports.getExamSchedule = async (req, res) => {
         examScheduleId: req.params.id,
     });
     let course = await Course.findOne({ courseId: examSchedule.courseId });
+    let studentNames = [];
+
+    for (let student of examSchedule.students) {
+        let user = await User.findOne({ studentId: student.studentId });
+
+        studentNames.push(user.fullname);
+    }
 
     if (examSchedule) {
         res.json({
             code: 1,
             data: examSchedule,
             courseName: course.courseName,
+            studentNames,
         });
     } else if (!examSchedule) {
         res.json({
@@ -25,50 +34,55 @@ module.exports.getExamSchedule = async (req, res) => {
 
 // Add exam schedule
 module.exports.addExamSchedule = async (req, res) => {
-    let { courseId, room, date, time } = req.body;
+    let { courseId, examRoom, examDate, examTime, students } = req.body;
 
     if (courseId === "") {
         res.json({
             code: 0,
-            message: "Tên lịch học không được bỏ trống",
+            message: "Tên lịch thi không được bỏ trống",
         });
-    } else if (room === "") {
+    } else if (examRoom === "") {
         res.json({
             code: 0,
-            message: "Phòng không được bỏ trống",
+            message: "Phòng thi không được bỏ trống",
         });
-    } else if (date === "") {
+    } else if (examDate === "") {
         res.json({
             code: 0,
-            message: "Ngày không được bỏ trống",
+            message: "Ngày thi không được bỏ trống",
         });
-    } else if (time === "") {
+    } else if (examTime === "") {
         res.json({
             code: 0,
             message: "Thời gian không được bỏ trống",
         });
+    } else if (students === []) {
+        res.json({
+            code: 0,
+            message: "Không có danh sách học viên dự thi",
+        });
     } else {
-        let learningSchedule = new LearningSchedule();
+        let examSchedule = new ExamSchedule();
         let course = await Course.findOne({ courseId });
-        let learningScheduleId = v4UniqueId();
+        let examScheduleId = v4UniqueId();
 
-        learningSchedule.learningScheduleId = learningScheduleId;
-        learningSchedule.courseId = courseId;
-        learningSchedule.date = date;
-        learningSchedule.room = room;
-        learningSchedule.time = time;
-        learningSchedule.save();
+        examSchedule.examScheduleId = examScheduleId;
+        examSchedule.courseId = courseId;
+        examSchedule.examDate = examDate;
+        examSchedule.examRoom = examRoom;
+        examSchedule.examTime = examTime;
+        examSchedule.students = students;
+        examSchedule.save();
 
         res.json({
             code: 1,
-            message: "Thêm lịch học thành công",
+            message: "Thêm lịch thi thành công",
             data: {
-                learningScheduleId,
+                examScheduleId,
                 courseName: course.courseName,
-                date,
-                time,
-                room,
-                teacherName: course.courseTeacher,
+                examDate,
+                examTime,
+                examRoom,
             },
         });
     }

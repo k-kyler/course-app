@@ -97,7 +97,18 @@ block content
                                         th Điều khiển
 
                                 tbody(id="examScheduleList")
-
+                                    if examSchedules
+                                        each examSchedule in examSchedules
+                                            tr(id=examSchedule.examScheduleId)
+                                                td= examSchedule.courseName
+                                                td= examSchedule.examRoom
+                                                td= examSchedule.examDate
+                                                td= examSchedule.examTime
+                                                td(class="d-flex")
+                                                    button(type="button" class="btn btn-outline-success viewExamSchedule" data-examScheduleId=examSchedule.examScheduleId) Chi tiết
+                                                    button(type="button" class="ml-2 btn btn-outline-primary editExamSchedule" data-examScheduleId=examSchedule.examScheduleId) Cập nhật
+                                                    button(type="button" class="ml-2 btn btn-outline-danger deleteExamSchedule" data-examScheduleId=examSchedule.examScheduleId) Xóa
+    
     br
     br
     br

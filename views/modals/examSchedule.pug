@@ -1,3 +1,19 @@
+//- View exam schedule modal
+#viewExamScheduleModal.modal.fade(role='dialog')
+    .modal-dialog.modal-lg(role='content')
+        .modal-content
+            .modal-header
+                h4.modal-title#viewExamScheduleTitle
+                button.close(type='close', data-dismiss='modal') &times;
+            .modal-body
+                    div.form-group.row
+                        label(class="col-form-label col-md-12") Danh sách học viên dự thi
+                        div(class="col-md-12")
+                            ul(id="viewExamScheduleStudentsList")
+
+                    div.d-flex.justify-content-end
+                        button(class="btn btn-default ml-3", data-dismiss="modal") Đóng
+
 //- Add exam schedule modal
 #addExamScheduleModal.modal.fade(role='dialog')
     .modal-dialog.modal-lg(role='content')
