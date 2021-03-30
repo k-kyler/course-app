@@ -30,7 +30,7 @@ module.exports.addLearningSchedule = async (req, res) => {
     if (courseId === "") {
         res.json({
             code: 0,
-            message: "Tên lịch học không được bỏ trống",
+            message: "Tên khóa học không được bỏ trống",
         });
     } else if (room === "") {
         res.json({

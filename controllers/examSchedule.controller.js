@@ -39,7 +39,7 @@ module.exports.addExamSchedule = async (req, res) => {
     if (courseId === "") {
         res.json({
             code: 0,
-            message: "Tên lịch thi không được bỏ trống",
+            message: "Tên khóa học không được bỏ trống",
         });
     } else if (examRoom === "") {
         res.json({
@@ -56,7 +56,7 @@ module.exports.addExamSchedule = async (req, res) => {
             code: 0,
             message: "Thời gian không được bỏ trống",
         });
-    } else if (students === []) {
+    } else if (students.length === 0) {
         res.json({
             code: 0,
             message: "Không có danh sách học viên dự thi",
@@ -113,7 +113,7 @@ module.exports.editExamSchedule = async (req, res) => {
             code: 0,
             message: "Thời gian không được bỏ trống",
         });
-    } else if (students === []) {
+    } else if (students.length === 0) {
         res.json({
             code: 0,
             message: "Không có danh sách học viên dự thi",

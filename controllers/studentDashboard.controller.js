@@ -3,6 +3,7 @@ const Notification = require("../models/notification.model");
 const Course = require("../models/course.model");
 const Invoice = require("../models/invoice.model");
 const LearningSchedule = require("../models/learningSchedule.model");
+const ExamSchedule = require("../models/examSchedule.model");
 
 // Notification
 module.exports.studentNotification = async (req, res) => {
@@ -30,11 +31,13 @@ module.exports.studentCourse = async (req, res) => {
 module.exports.studentSchedule = async (req, res) => {
     let user = await User.findById(req.signedCookies.userId);
     let learningSchedules = await LearningSchedule.find();
+    let examSchedules = await ExamSchedule.find();
     let invoices = await Invoice.find({
         studentId: user.studentId,
         status: "Đã hoàn tất",
     });
     let convertLearningSchedules = [];
+    let convertExamSchedules = [];
 
     for (let learningSchedule of learningSchedules) {
         for (let invoice of invoices) {
@@ -57,9 +60,28 @@ module.exports.studentSchedule = async (req, res) => {
         }
     }
 
+    for (let examSchedule of examSchedules) {
+        for (let student of examSchedule.students) {
+            if (user.studentId === student.studentId) {
+                let course = await Course.findOne({
+                    courseId: examSchedule.courseId,
+                });
+
+                convertExamSchedules.push({
+                    examScheduleId: examSchedule.examScheduleId,
+                    examRoom: examSchedule.examRoom,
+                    examDate: examSchedule.examDate,
+                    examTime: examSchedule.examTime,
+                    courseName: course.courseName,
+                });
+            }
+        }
+    }
+
     res.render("dashboards/student/schedule", {
         user,
         learningSchedules: convertLearningSchedules,
+        examSchedules: convertExamSchedules,
     });
 };
 

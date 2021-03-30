@@ -1,13 +1,24 @@
 $(document).ready(() => {
-    let checkDuplicate = {};
+    let checkDuplicateLC = {};
+    let checkDuplicateEC = {};
 
     $("#studentLearningScheduleList tr").each(function () {
         let item = $(this).text();
 
-        if (checkDuplicate[item]) {
+        if (checkDuplicateLC[item]) {
             $(this).remove();
         } else {
-            checkDuplicate[item] = true;
+            checkDuplicateLC[item] = true;
+        }
+    });
+
+    $("#studentExamScheduleList tr").each(function () {
+        let item = $(this).text();
+
+        if (checkDuplicateEC[item]) {
+            $(this).remove();
+        } else {
+            checkDuplicateEC[item] = true;
         }
     });
 });

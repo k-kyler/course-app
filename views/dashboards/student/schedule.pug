@@ -41,29 +41,57 @@ block content
 
             //- DataGridView
             div(class="col-sm-9 col-md-9 col-lg-9 col-xl-9")
-                h4
-                    i(class="far fa-calendar-alt")
-                    span &nbsp;&nbsp;Lịch học
-                //- Course List
-                table(id="MyTable" class="table table-hover")
-                    thead
-                        tr
-                            th Tên khóa học
-                            th Phòng
-                            th Ngày
-                            th Thời gian
-                            th Giảng viên
+                div(class="container-fluid")
+                    div(class="row")
+                        div(class="col-md-12")
+                            h4
+                                i(class="far fa-calendar-alt")
+                                span &nbsp;&nbsp;Lịch học
+                            //- Learning schedule List
+                            table(id="MyTable" class="table table-hover")
+                                thead
+                                    tr
+                                        th Tên khóa học
+                                        th Phòng
+                                        th Ngày
+                                        th Thời gian
+                                        th Giảng viên
 
-                    tbody(id="studentLearningScheduleList")
-                        if learningSchedules
-                            each learningSchedule in learningSchedules
-                                tr
-                                    td= learningSchedule.courseName
-                                    td= learningSchedule.room
-                                    td= learningSchedule.date
-                                    td= learningSchedule.time
-                                    td= learningSchedule.teacherName
+                                tbody(id="studentLearningScheduleList")
+                                    if learningSchedules
+                                        each learningSchedule in learningSchedules
+                                            tr
+                                                td= learningSchedule.courseName
+                                                td= learningSchedule.room
+                                                td= learningSchedule.date
+                                                td= learningSchedule.time
+                                                td= learningSchedule.teacherName
                         
+                            br
+                            br
+                            br
+
+                        div(class="col-md-12")
+                            h4
+                                i(class="fas fa-clipboard-list")
+                                span &nbsp;&nbsp;Lịch thi
+                            //- Exam schedule List
+                            table(id="MyTable" class="table table-hover")
+                                thead
+                                    tr
+                                        th Tên khóa học
+                                        th Phòng thi
+                                        th Ngày thi
+                                        th Thời gian
+
+                                tbody(id="studentExamScheduleList")
+                                    if examSchedules
+                                        each examSchedule in examSchedules
+                                            tr
+                                                td= examSchedule.courseName
+                                                td= examSchedule.examRoom
+                                                td= examSchedule.examDate
+                                                td= examSchedule.examTime
 
     br
     br
