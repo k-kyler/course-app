@@ -15,7 +15,6 @@ $(document).ready(() => {
                 notificationName: $("#notificationName").val(),
                 notificationContent: $("#notificationContent").val(),
                 timestamp:
-                    "Đã chỉnh sửa - " +
                     new Date().toLocaleTimeString() +
                     ", " +
                     new Date().toLocaleDateString(),
