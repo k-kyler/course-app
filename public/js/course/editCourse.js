@@ -44,7 +44,11 @@ $(document).ready(() => {
             body: JSON.stringify({
                 courseName: $("#editCourseName").val(),
                 courseDescription: $("#editCourseDescription").val(),
-                courseFee: $("#editCourseFee").val(),
+                courseFee: Number(
+                    $("#editCourseFee")
+                        .val()
+                        .replace(/[^0-9.-]+/g, "")
+                ),
                 courseStart: $("#editCourseStart").val(),
                 courseTeacher: $("#editCourseTeacher").val(),
             }),
