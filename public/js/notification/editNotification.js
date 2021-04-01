@@ -43,6 +43,10 @@ $(document).ready(() => {
             body: JSON.stringify({
                 notificationName: $("#editNotificationName").val(),
                 notificationContent: $("#editNotificationContent").val(),
+                timestamp:
+                    new Date().toLocaleTimeString() +
+                    ", " +
+                    new Date().toLocaleDateString(),
             }),
         })
             .then((response) => response.json())

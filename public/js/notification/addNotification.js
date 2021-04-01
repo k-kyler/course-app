@@ -5,6 +5,7 @@ $(document).ready(() => {
 
     $("#addNotificationButton").click((event) => {
         event.preventDefault();
+
         fetch("/notification", {
             method: "POST",
             headers: {
@@ -13,6 +14,10 @@ $(document).ready(() => {
             body: JSON.stringify({
                 notificationName: $("#notificationName").val(),
                 notificationContent: $("#notificationContent").val(),
+                timestamp:
+                    new Date().toLocaleTimeString() +
+                    ", " +
+                    new Date().toLocaleDateString(),
             }),
         })
             .then((response) => response.json())

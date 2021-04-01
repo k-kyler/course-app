@@ -22,7 +22,7 @@ module.exports.getNotification = async (req, res) => {
 
 // Add notification
 module.exports.addNotification = async (req, res) => {
-    let { notificationName, notificationContent } = req.body;
+    let { notificationName, notificationContent, timestamp } = req.body;
 
     if (notificationName === "") {
         res.json({
@@ -37,10 +37,6 @@ module.exports.addNotification = async (req, res) => {
     } else {
         let notification = new Notification();
         let notificationId = v4UniqueId();
-        let timestamp =
-            new Date().toLocaleTimeString() +
-            ", " +
-            new Date().toLocaleDateString();
 
         notification.notificationId = notificationId;
         notification.notificationName = notificationName;
@@ -63,13 +59,8 @@ module.exports.addNotification = async (req, res) => {
 
 // Edit notification
 module.exports.editNotification = async (req, res) => {
-    let { notificationName, notificationContent } = req.body;
+    let { notificationName, notificationContent, timestamp } = req.body;
     let { id } = req.params;
-    let timestamp =
-        "Đã cập nhật lúc " +
-        new Date().toLocaleTimeString() +
-        ", " +
-        new Date().toLocaleDateString();
 
     if (notificationName === "") {
         res.json({
