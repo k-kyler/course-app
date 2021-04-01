@@ -14,7 +14,9 @@ $(document).ready(() => {
                     $("#editCourseDescription").val(
                         result.data.courseDescription
                     );
-                    $("#editCourseFee").val(result.data.courseFee);
+                    $("#editCourseFee").val(
+                        Intl.NumberFormat().format(result.data.courseFee)
+                    );
                     $("#editCourseStart").val(result.data.courseStart);
                     $("#editCourseTeacher").val(result.data.courseTeacher);
                 } else if (result.code === 0) {
