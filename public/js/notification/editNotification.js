@@ -44,6 +44,7 @@ $(document).ready(() => {
                 notificationName: $("#editNotificationName").val(),
                 notificationContent: $("#editNotificationContent").val(),
                 timestamp:
+                    "Đã chỉnh sửa - " +
                     new Date().toLocaleTimeString() +
                     ", " +
                     new Date().toLocaleDateString(),
