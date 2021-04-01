@@ -40,7 +40,7 @@ module.exports.addCourse = async (req, res) => {
             code: 0,
             message: "Mô tả khóa học không được bỏ trống",
         });
-    } else if (courseFee === "") {
+    } else if (!courseFee) {
         res.json({
             code: 0,
             message: "Học phí không được bỏ trống",
@@ -63,7 +63,7 @@ module.exports.addCourse = async (req, res) => {
         course.courseName = courseName;
         course.courseDescription = courseDescription;
         course.courseStart = courseStart;
-        course.courseFee = courseFee;
+        course.courseFee = parseInt(courseFee);
         course.courseTeacher = courseTeacher;
         course.save();
 
@@ -74,7 +74,7 @@ module.exports.addCourse = async (req, res) => {
                 courseId,
                 courseName,
                 courseDescription,
-                courseFee,
+                courseFee: parseInt(courseFee),
                 courseStart,
                 courseTeacher,
             },
@@ -103,7 +103,7 @@ module.exports.editCourse = async (req, res) => {
             code: 0,
             message: "Mô tả khóa học không được bỏ trống",
         });
-    } else if (courseFee === "") {
+    } else if (!courseFee) {
         res.json({
             code: 0,
             message: "Học phí không được bỏ trống",
@@ -124,7 +124,7 @@ module.exports.editCourse = async (req, res) => {
             {
                 courseName,
                 courseDescription,
-                courseFee,
+                courseFee: parseInt(courseFee),
                 courseStart,
                 courseTeacher,
             },
@@ -137,7 +137,7 @@ module.exports.editCourse = async (req, res) => {
             data: {
                 courseName,
                 courseDescription,
-                courseFee,
+                courseFee: parseInt(courseFee),
                 courseStart,
                 courseTeacher,
             },

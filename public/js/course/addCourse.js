@@ -1,5 +1,8 @@
 $(document).ready(() => {
     $("#addCourse").click(() => {
+        $("#courseFee").val() = Intl.NumberFormat().format(
+            $("#courseFee").val()
+        );
         $("#addCourseModal").modal("toggle");
     });
 
