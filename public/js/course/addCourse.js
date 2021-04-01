@@ -13,7 +13,11 @@ $(document).ready(() => {
             body: JSON.stringify({
                 courseName: $("#courseName").val(),
                 courseDescription: $("#courseDescription").val(),
-                courseFee: $("#courseFee").val(),
+                courseFee: Number(
+                    $("#courseFee")
+                        .val()
+                        .replace(/[^0-9.-]+/g, "")
+                ),
                 courseStart: $("#courseStart").val(),
                 courseTeacher: $("#courseTeacher").val(),
             }),
