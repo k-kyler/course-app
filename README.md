@@ -3,6 +3,16 @@
 @Authors:
 To Vinh Khang, Bui Quang Khai, Truong Van Long
 
+@Docs:
+#### BSA
+```
+https://github.com/ToVinhKhang/All-Reports/blob/main/BSA_WEB/WEB_CenterManagement.pdf
+```
+#### UIUX
+```
+https://github.com/ToVinhKhang/All-Reports/blob/main/BSA_WEB/UIUX_CenterManagement.pdf
+```
+
 # Using:
 <br />• NodeJS 14.15.0
 <br />• ExpressJS 4.17.1
