@@ -35,3 +35,8 @@ npm start
 ```
 
 Producted by KKL Software Team
+
+# References
+```
+https://github.com/ToVinhKhang/All-Reports/blob/main/BSA_WEB/BSA_CenterManagement.pdf
+```
